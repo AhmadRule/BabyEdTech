@@ -95,7 +95,7 @@ export default function Testimonials() {
         
         {/* Floating icons */}
         <Heart className="absolute top-[15%] left-[10%] w-14 h-14 text-chart-4/12 animate-float" style={{ animationDelay: '0.5s' }} />
-        <Star className="absolute top-[25%] right-[12%] w-12 h-12 text-primary/12 animate-float-diagonal" style={{ animationDelay: '1.5s' }} />
+        <Star className="absolute top-[8%] right-[12%] w-12 h-12 animate-float-diagonal" style={{ color: '#0183F1', animationDelay: '1.5s' }} />
         <Heart className="absolute bottom-[30%] right-[18%] w-16 h-16 text-chart-3/12 animate-float-slow" style={{ animationDelay: '2.8s' }} />
         
         {/* Animated ping dots */}
