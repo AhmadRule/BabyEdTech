@@ -1,13 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star } from 'lucide-react';
-import childCenter from '@assets/stock_images/middle_eastern_child_c7117611.jpg';
-import child1 from '@assets/stock_images/middle_eastern_child_9eb3a7e2.jpg';
-import child2 from '@assets/stock_images/middle_eastern_child_cc9cde88.jpg';
-import mother1 from '@assets/stock_images/arab_middle_eastern__5c938089.jpg';
-import mother2 from '@assets/stock_images/arab_middle_eastern__7d4ba993.jpg';
-import father1 from '@assets/stock_images/arab_middle_eastern__257100f6.jpg';
-import father2 from '@assets/stock_images/arab_middle_eastern__26eedc02.jpg';
+import saudiBoy from '@assets/saudi_boy.png';
+import saudiFather from '@assets/saudi_father.png';
+import saudiMother from '@assets/saudi_mother.png';
+import saudiBaby from '@assets/saudi_baby.png';
+import ipadMockup from '@assets/ipad_mockup.png';
 
 export default function Hero() {
   const { t, language, formatNumber } = useLanguage();
@@ -32,18 +30,31 @@ export default function Hero() {
         <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-chart-2/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-40 right-[20%] w-48 h-48 bg-chart-4/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
         
-        {/* Happy Middle Eastern People - Circled Images */}
-        <div className="absolute top-[15%] left-[5%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
-          <img src={child1} alt="Happy children" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute top-[25%] right-[8%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
-          <img src={mother1} alt="Happy mother" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute bottom-[30%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
-          <img src={father1} alt="Happy father" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute bottom-[20%] right-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
-          <img src={child2} alt="Happy children" className="w-full h-full object-cover" />
+        {/* iPad Mockup with Animated People Photos */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[380px] animate-float-slow pointer-events-auto">
+          {/* iPad Frame */}
+          <div className="relative w-full h-full">
+            <img src={ipadMockup} alt="iPad" className="w-full h-full object-contain drop-shadow-2xl" />
+            
+            {/* Screen Content - Photos Carousel */}
+            <div className="absolute top-[8%] left-[9%] right-[9%] bottom-[8%] bg-white rounded-lg overflow-hidden">
+              {/* Animated Photos Slideshow */}
+              <div className="relative w-full h-full">
+                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '0s' }}>
+                  <img src={saudiBaby} alt="Happy baby" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '3s' }}>
+                  <img src={saudiBoy} alt="Happy boy" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '6s' }}>
+                  <img src={saudiMother} alt="Happy mother" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '9s' }}>
+                  <img src={saudiFather} alt="Happy father" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         
         {/* Small floating shapes */}
