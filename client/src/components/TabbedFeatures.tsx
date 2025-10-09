@@ -121,7 +121,9 @@ export default function TabbedFeatures() {
                             <div className="flex items-center justify-between mb-3">
                               <div className="flex items-center gap-2">
                                 <Receipt className="h-5 w-5 text-chart-1" />
-                                <div className="text-sm font-semibold text-foreground">INV-2024-001</div>
+                                <div className="text-sm font-semibold text-foreground">
+                                  {language === 'en' ? 'INV-2024-001' : 'فاتورة-2024-001'}
+                                </div>
                               </div>
                               <CheckCircle className="h-5 w-5 text-green-500" />
                             </div>
@@ -130,7 +132,9 @@ export default function TabbedFeatures() {
                               <div className="h-2 bg-muted rounded w-1/2" />
                             </div>
                             <div className="mt-3 pt-3 border-t border-border">
-                              <div className="text-lg font-bold text-green-600">$350.00</div>
+                              <div className="text-lg font-bold text-green-600">
+                                {language === 'en' ? '$350.00' : '350.00 ر.س'}
+                              </div>
                             </div>
                           </div>
 
@@ -138,7 +142,9 @@ export default function TabbedFeatures() {
                             <div className="flex items-center justify-between mb-3">
                               <div className="flex items-center gap-2">
                                 <Receipt className="h-5 w-5 text-chart-2" />
-                                <div className="text-sm font-semibold text-foreground">INV-2024-002</div>
+                                <div className="text-sm font-semibold text-foreground">
+                                  {language === 'en' ? 'INV-2024-002' : 'فاتورة-2024-002'}
+                                </div>
                               </div>
                               <CheckCircle className="h-5 w-5 text-blue-500" />
                             </div>
@@ -147,7 +153,9 @@ export default function TabbedFeatures() {
                               <div className="h-2 bg-muted rounded w-1/2" />
                             </div>
                             <div className="mt-3 pt-3 border-t border-border">
-                              <div className="text-lg font-bold text-blue-600">$280.00</div>
+                              <div className="text-lg font-bold text-blue-600">
+                                {language === 'en' ? '$280.00' : '280.00 ر.س'}
+                              </div>
                             </div>
                           </div>
 
@@ -155,7 +163,9 @@ export default function TabbedFeatures() {
                             <div className="flex items-center justify-between mb-3">
                               <div className="flex items-center gap-2">
                                 <Receipt className="h-5 w-5 text-chart-4" />
-                                <div className="text-sm font-semibold text-foreground">INV-2024-003</div>
+                                <div className="text-sm font-semibold text-foreground">
+                                  {language === 'en' ? 'INV-2024-003' : 'فاتورة-2024-003'}
+                                </div>
                               </div>
                               <AlertCircle className="h-5 w-5 text-amber-500" />
                             </div>
@@ -164,7 +174,9 @@ export default function TabbedFeatures() {
                               <div className="h-2 bg-muted rounded w-1/2" />
                             </div>
                             <div className="mt-3 pt-3 border-t border-border">
-                              <div className="text-lg font-bold text-amber-600">$420.00</div>
+                              <div className="text-lg font-bold text-amber-600">
+                                {language === 'en' ? '$420.00' : '420.00 ر.س'}
+                              </div>
                             </div>
                           </div>
 
