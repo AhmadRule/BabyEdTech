@@ -1,13 +1,123 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { verifyAdminCredentials, generateSessionToken } from "./lib/adminAuth";
+import { requireAdmin } from "./middleware/adminAuth";
+import multer from "multer";
+import path from "path";
+import { z } from "zod";
+
+const uploadsDir = path.join(process.cwd(), 'server', 'uploads');
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, `mybaby-logo${ext}`);
+  }
+});
+
+const upload = multer({
+  storage: multerStorage,
+  limits: { fileSize: 2 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml'];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only PNG, JPEG, and SVG are allowed.'));
+    }
+  }
+});
+
+const loginSchema = z.object({
+  username: z.string(),
+  password: z.string(),
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
+  app.use('/uploads', require('express').static(uploadsDir));
 
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+  app.post('/api/admin/login', async (req, res) => {
+    try {
+      const { username, password } = loginSchema.parse(req.body);
+      
+      const isValid = await verifyAdminCredentials(username, password);
+      
+      if (!isValid) {
+        return res.status(401).json({ error: 'Invalid credentials' });
+      }
+
+      const sessionToken = generateSessionToken();
+      const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+      
+      await storage.createAdminSession({
+        sessionToken,
+        expiresAt,
+      });
+
+      res.cookie('admin_session', sessionToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
+
+      res.json({ success: true });
+    } catch (error) {
+      res.status(400).json({ error: 'Invalid request' });
+    }
+  });
+
+  app.post('/api/admin/logout', requireAdmin, async (req, res) => {
+    const sessionToken = req.cookies?.admin_session;
+    if (sessionToken) {
+      await storage.deleteAdminSession(sessionToken);
+    }
+    res.clearCookie('admin_session');
+    res.json({ success: true });
+  });
+
+  app.get('/api/admin/me', requireAdmin, (req, res) => {
+    res.json({ authenticated: true });
+  });
+
+  app.post('/api/admin/logo', requireAdmin, upload.single('logo'), async (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+      }
+
+      const logoPath = `/uploads/${req.file.filename}`;
+      
+      await storage.updateBrandingSettings({ logoPath });
+
+      res.json({ 
+        success: true, 
+        logoPath 
+      });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message || 'Upload failed' });
+    }
+  });
+
+  app.get('/api/logo', async (req, res) => {
+    const settings = await storage.getBrandingSettings();
+    
+    if (settings?.logoPath) {
+      res.json({
+        hasCustomLogo: true,
+        logoUrl: settings.logoPath,
+      });
+    } else {
+      res.json({
+        hasCustomLogo: false,
+        logoUrl: null,
+      });
+    }
+  });
 
   const httpServer = createServer(app);
 
