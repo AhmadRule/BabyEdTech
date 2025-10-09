@@ -32,23 +32,23 @@ export default function Hero() {
         <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-chart-2/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-40 right-[20%] w-48 h-48 bg-chart-4/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
         
-        {/* Floating Circled People Photos */}
-        <div className="absolute top-[15%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
+        {/* Floating Circled People Photos - positioned away from center text */}
+        <div className="absolute top-[12%] left-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
           <img src={saudiBaby} alt="Happy baby" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[20%] right-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
+        <div className="absolute top-[15%] right-[4%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
           <img src={saudiBoy} alt="Happy boy" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[35%] left-[5%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
+        <div className="absolute top-[35%] left-[2%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
           <img src={saudiMother} alt="Happy mother" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[30%] right-[6%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
+        <div className="absolute top-[32%] right-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
           <img src={saudiFather} alt="Happy father" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[25%] left-[15%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-slow" style={{ animationDelay: '3.5s' }}>
+        <div className="absolute top-[22%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-slow" style={{ animationDelay: '3.5s' }}>
           <img src={toddlerNursery} alt="Toddler in nursery" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[18%] right-[20%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '4s' }}>
+        <div className="absolute top-[25%] right-[10%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '4s' }}>
           <img src={nurseryClassroom} alt="Nursery classroom" className="w-full h-full object-cover" />
         </div>
         
@@ -67,12 +67,7 @@ export default function Hero() {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative z-10">
-        <div className="text-center space-y-6 md:space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full backdrop-blur-sm">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">{t('edtechBadge')}</span>
-          </div>
-          
+        <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
             {t('heroTitle')}
           </h1>
