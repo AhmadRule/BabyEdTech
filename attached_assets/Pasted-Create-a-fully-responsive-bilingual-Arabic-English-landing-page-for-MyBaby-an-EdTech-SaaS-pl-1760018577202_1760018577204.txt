@@ -1,0 +1,58 @@
+Create a fully responsive bilingual (Arabic + English) landing page for "MyBaby" — an EdTech SaaS platform for nurseries and kindergartens in Saudi Arabia. 
+The design must benchmark the modernity and warmth of https://www.famly.co/ and https://mybrightwheel.com/, while following MyBaby’s brand identity and color palette below:
+
+🎨 Brand Identity:
+- Primary Color: #00ADEF  
+- Secondary Colors: #89AEFF, #EE7248, #DFFC8E, #F4AEDF, #2B885C, #333231  
+- Typography: Use a clean modern Arabic font (e.g., Noto Kufi Arabic or Cairo) and English font (e.g., Poppins or Nunito).  
+- Style: Modern, clean, friendly, rounded edges, soft shadows, and playful yet professional layout.  
+- Background: Subtle pastel gradient or pattern inspired by MyBaby patterns.  
+
+🧩 Structure & Features:
+1. **Navigation Bar (Sticky)**  
+   - Logo (English logo only)  
+   - Menu: Home | Features | For Schools | For Parents | Contact Us  
+   - Language toggle (AR/EN)
+
+2. **Hero Section**  
+   - Large main Arabic headline (in bold):  
+     - **"الحضانة بجوالك"**  
+   - English headline below it:  
+     - **"Your Nursery, In Your Pocket."**  
+   - Subtext explaining MyBaby in both languages:  
+     - EN: “The all-in-one app and ERP for kindergartens — connecting schools, parents, and teachers.”  
+     - AR: “تطبيق شامل لإدارة الحضانات والروضات، يربط بين المدرسة والوالدين والمعلمات.”  
+   - CTA buttons: “Get a Demo” / “جرّب مجاناً”
+   - Illustration or image of happy parents, teacher, and children using tablets or phones.
+
+3. **Features Section**  
+   - 4 rounded feature cards with icons:
+     - “Daily Updates & Reports” / “التقارير اليومية”
+     - “Parent Communication Hub” / “التواصل مع أولياء الأمور”
+     - “Teacher Management Dashboard” / “إدارة المعلمات”
+     - “Smart ERP Analytics” / “نظام تحليلي ذكي”
+   - Use soft gradients and hover animations.
+
+4. **Testimonials Section**  
+   - Arabic & English quotes from nursery owners and parents.
+   - Soft carousel design with user avatars and pastel backgrounds.
+
+5. **Call-to-Action Section**  
+   - EN: “Join hundreds of nurseries transforming their communication today.”  
+   - AR: “انضم إلى مئات الحضانات التي بدأت التحول الرقمي اليوم.”  
+   - Button: “Schedule a Demo” / “احجز عرض توضيحي”
+
+6. **Footer**  
+   - Contact info: info@mybabyapp.net | +966 54 332 4707  
+   - Social media icons (Instagram, LinkedIn)  
+   - Copyright © 2025 MyBaby | Made with 💙 in Saudi Arabia  
+
+💡 Technical:
+- HTML, CSS, and JS (or React if supported by Replit).
+- RTL support for Arabic (automatic layout flip on language toggle).
+- Add smooth scroll animations (AOS or Framer Motion).
+- Mobile-friendly and SEO optimized.
+- Include favicon and meta tags using MyBaby colors and logo.
+
+Deliver a pixel-perfect, modern, and bilingual landing page with a strong identity centered around the phrase **"الحضانة بجوالك"** as the emotional brand hook.
+
