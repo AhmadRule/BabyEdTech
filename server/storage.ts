@@ -49,7 +49,7 @@ export class MemStorage implements IStorage {
     const id = this.brandingSettings?.id || randomUUID();
     const updatedSettings: BrandingSettings = {
       id,
-      logoPath: settings.logoPath,
+      logoPath: settings.logoPath ?? null,
       updatedAt: new Date(),
     };
     this.brandingSettings = updatedSettings;
