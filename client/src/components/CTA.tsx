@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Calendar } from 'lucide-react';
+import { Calendar, Sparkle, Rocket } from 'lucide-react';
 
 export default function CTA() {
   const { language, t } = useLanguage();
@@ -28,8 +28,20 @@ export default function CTA() {
         }}
       />
 
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-chart-2/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+      {/* Smooth Moving Graphics */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Large floating orbs */}
+        <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-chart-2/10 rounded-full blur-3xl animate-float-diagonal" style={{ animationDelay: '1.5s' }} />
+        
+        {/* Floating icons */}
+        <Sparkle className="absolute top-[20%] right-[15%] w-14 h-14 text-primary/15 animate-float-diagonal-reverse" style={{ animationDelay: '0.7s' }} />
+        <Rocket className="absolute bottom-[25%] left-[12%] w-16 h-16 text-chart-2/15 animate-float" style={{ animationDelay: '2s' }} />
+        
+        {/* Sliding dots */}
+        <div className="absolute top-[40%] left-0 w-3 h-3 bg-primary/25 rounded-full animate-slide-horizontal" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute bottom-[35%] right-0 w-3 h-3 bg-chart-2/25 rounded-full animate-slide-horizontal-reverse" style={{ animationDelay: '1.8s' }} />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-chart-1 to-primary p-8 md:p-16 text-center shadow-2xl">

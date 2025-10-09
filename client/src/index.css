@@ -326,3 +326,108 @@
     inset: -1px;
   }
 }
+
+/* Smooth Moving Graphics Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes float-diagonal {
+  0%, 100% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(-15px, -25px);
+  }
+}
+
+@keyframes float-diagonal-reverse {
+  0%, 100% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(15px, -25px);
+  }
+}
+
+@keyframes slide-horizontal {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes slide-horizontal-reverse {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-diagonal {
+  animation: float-diagonal 7s ease-in-out infinite;
+}
+
+.animate-float-diagonal-reverse {
+  animation: float-diagonal-reverse 7s ease-in-out infinite;
+}
+
+.animate-slide-horizontal {
+  animation: slide-horizontal 10s ease-in-out infinite;
+}
+
+.animate-slide-horizontal-reverse {
+  animation: slide-horizontal-reverse 10s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-scale-pulse {
+  animation: scale-pulse 4s ease-in-out infinite;
+}

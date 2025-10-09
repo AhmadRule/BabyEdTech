@@ -3,7 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Heart, Star } from 'lucide-react';
 import avatar1 from '@assets/stock_images/professional_woman_a_f65f28c8.jpg';
 import avatar2 from '@assets/stock_images/professional_man_ava_ac935556.jpg';
 import avatar3 from '@assets/stock_images/professional_woman_a_1ec00f92.jpg';
@@ -87,9 +87,22 @@ export default function Testimonials() {
         }}
       />
 
-      <div className="absolute top-20 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-ping" style={{ animationDelay: '0.3s' }} />
-      <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-chart-2/30 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-chart-4/30 rounded-full animate-ping" style={{ animationDelay: '1.5s' }} />
+      {/* Smooth Moving Graphics */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Floating gradient blobs */}
+        <div className="absolute top-20 right-[20%] w-80 h-80 bg-primary/8 rounded-full blur-3xl animate-float-diagonal-reverse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-20 left-[15%] w-72 h-72 bg-chart-4/8 rounded-full blur-3xl animate-float-slow" style={{ animationDelay: '2.5s' }} />
+        
+        {/* Floating icons */}
+        <Heart className="absolute top-[15%] left-[10%] w-14 h-14 text-chart-4/12 animate-float" style={{ animationDelay: '0.5s' }} />
+        <Star className="absolute top-[25%] right-[12%] w-12 h-12 text-primary/12 animate-float-diagonal" style={{ animationDelay: '1.5s' }} />
+        <Heart className="absolute bottom-[30%] right-[18%] w-16 h-16 text-chart-3/12 animate-float-slow" style={{ animationDelay: '2.8s' }} />
+        
+        {/* Animated ping dots */}
+        <div className="absolute top-20 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-ping" style={{ animationDelay: '0.3s' }} />
+        <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-chart-2/30 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-chart-4/30 rounded-full animate-ping" style={{ animationDelay: '1.5s' }} />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">

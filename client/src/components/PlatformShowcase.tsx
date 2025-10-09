@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Monitor, Smartphone, Tablet, Globe } from 'lucide-react';
+import { Monitor, Smartphone, Tablet, Globe, Zap, Cloud } from 'lucide-react';
 
 export default function PlatformShowcase() {
   const { language, formatNumber } = useLanguage();
@@ -44,6 +44,21 @@ export default function PlatformShowcase() {
           `
         }}
       />
+      
+      {/* Smooth Moving Graphics */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Floating gradient orbs */}
+        <div className="absolute top-20 right-[10%] w-80 h-80 bg-primary/8 rounded-full blur-3xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-20 left-[15%] w-72 h-72 bg-chart-3/8 rounded-full blur-3xl animate-float-slow" style={{ animationDelay: '3s' }} />
+        
+        {/* Floating icons */}
+        <Zap className="absolute top-[15%] left-[8%] w-16 h-16 text-primary/10 animate-float-diagonal-reverse" style={{ animationDelay: '0.8s' }} />
+        <Cloud className="absolute bottom-[20%] right-[12%] w-20 h-20 text-chart-2/10 animate-float" style={{ animationDelay: '2s' }} />
+        
+        {/* Sliding elements */}
+        <div className="absolute top-[50%] left-0 w-4 h-4 bg-primary/20 rounded-full animate-slide-horizontal" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-[65%] right-0 w-3 h-3 bg-chart-4/20 rounded-full animate-slide-horizontal-reverse" style={{ animationDelay: '2.5s' }} />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">

@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FileText, MessageCircle, Users, BarChart3 } from 'lucide-react';
+import { FileText, MessageCircle, Users, BarChart3, Hexagon, Star } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 export default function Features() {
@@ -59,8 +59,22 @@ export default function Features() {
         }}
       />
 
-      <div className="absolute top-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl -z-10" />
+      {/* Smooth Moving Graphics */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Large floating blobs */}
+        <div className="absolute top-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl animate-float-diagonal" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-chart-4/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+        
+        {/* Floating shapes */}
+        <Hexagon className="absolute top-[20%] right-[15%] w-16 h-16 text-primary/15 animate-float-diagonal-reverse" style={{ animationDelay: '0.5s' }} />
+        <Star className="absolute top-[40%] left-[12%] w-12 h-12 text-chart-2/15 animate-float-slow" style={{ animationDelay: '1.5s' }} />
+        <Hexagon className="absolute bottom-[25%] right-[20%] w-14 h-14 text-chart-4/15 animate-float" style={{ animationDelay: '2.5s' }} />
+        
+        {/* Rotating decorative elements */}
+        <div className="absolute top-[15%] left-[20%] w-24 h-24 border-2 border-primary/10 rounded-full animate-rotate-slow" />
+        <div className="absolute bottom-[30%] right-[25%] w-20 h-20 border-2 border-chart-2/10 animate-rotate-slow" style={{ animationDelay: '8s' }} />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">
