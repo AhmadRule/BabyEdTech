@@ -110,6 +110,15 @@ server/
 - Default credentials show warning in development
 
 ## Recent Changes
+- 2025-10-09: Added smooth moving graphics throughout the landing page:
+  - Custom CSS animations: float, float-slow, float-diagonal, slide-horizontal, rotate-slow, scale-pulse
+  - Hero section: Large floating circles, small shapes (Circle, Square, Triangle), sliding dots, rotating borders
+  - Features section: Floating gradient blobs, shapes (Hexagon, Star), rotating decorative circles
+  - PlatformShowcase section: Floating gradient orbs, icons (Zap, Cloud), sliding dots
+  - CTA section: Large floating orbs, icons (Sparkle, Rocket), sliding dots
+  - Testimonials section: Floating blobs, icons (Heart, Star), ping dots
+  - All animations use staggered delays (6-10s cycles) for smooth, professional movement
+  - Decorative elements use pointer-events-none to avoid blocking user interaction
 - 2025-10-09: Reverted to clean, professional design (inspired by Brightwheel):
   - Removed #0183F1 background from Hero (restored subtle gradient)
   - Removed "Made with 💙 in Saudi Arabia" badge for cleaner aesthetic
