@@ -26,7 +26,7 @@ export default function Testimonials() {
     },
     {
       quote: "As a parent, I love being able to see what my child is doing throughout the day. It gives me peace of mind.",
-      quoteAr: "كأم، أحب أن أتمكن من رؤية ما يفعله طفلي طوال اليوم. هذا يمنحني راحة البال.",
+      quoteAr: "كأب، أحب أن أتمكن من رؤية ما يفعله طفلي طوال اليوم. هذا يمنحني راحة البال.",
       name: "Mohammed Al-Otaibi",
       nameAr: "محمد العتيبي",
       role: "Parent",
@@ -158,7 +158,7 @@ export default function Testimonials() {
               onClick={handlePrev}
               data-testid="button-testimonial-prev"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronRight className="h-5 w-5" />
             </Button>
             
             <div className="flex gap-2">
@@ -180,7 +180,7 @@ export default function Testimonials() {
               onClick={handleNext}
               data-testid="button-testimonial-next"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronLeft className="h-5 w-5" />
             </Button>
           </div>
         </div>
