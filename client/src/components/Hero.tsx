@@ -1,6 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star } from 'lucide-react';
+import childrenImg1 from '@assets/stock_images/happy_saudi_children_ed8a4f03.jpg';
+import childrenImg2 from '@assets/stock_images/happy_saudi_children_45736d19.jpg';
+import motherImg from '@assets/stock_images/happy_saudi_mother_s_e1179210.jpg';
+import fatherImg from '@assets/stock_images/happy_saudi_father_s_1549a1c2.jpg';
 
 export default function Hero() {
   const { t, language, formatNumber } = useLanguage();
@@ -25,11 +29,23 @@ export default function Hero() {
         <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-chart-2/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-40 right-[20%] w-48 h-48 bg-chart-4/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
         
+        {/* Happy Saudi People - Circled Images */}
+        <div className="absolute top-[15%] left-[5%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
+          <img src={childrenImg1} alt="Happy children" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[25%] right-[8%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
+          <img src={motherImg} alt="Happy mother" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-[30%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
+          <img src={fatherImg} alt="Happy father" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-[20%] right-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
+          <img src={childrenImg2} alt="Happy children" className="w-full h-full object-cover" />
+        </div>
+        
         {/* Small floating shapes */}
-        <Circle className="absolute top-[15%] left-[5%] w-12 h-12 text-primary/20 animate-float-diagonal" style={{ animationDelay: '0.5s' }} />
-        <Square className="absolute top-[25%] right-[8%] w-10 h-10 text-chart-2/20 animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }} />
-        <Triangle className="absolute bottom-[30%] left-[8%] w-14 h-14 text-chart-4/20 animate-float" style={{ animationDelay: '2.5s' }} />
-        <Circle className="absolute bottom-[20%] right-[10%] w-16 h-16 text-primary/20 animate-float-slow" style={{ animationDelay: '3s' }} />
+        <Square className="absolute top-[40%] right-[15%] w-10 h-10 text-chart-2/15 animate-float-diagonal-reverse" style={{ animationDelay: '4s' }} />
+        <Triangle className="absolute bottom-[45%] left-[18%] w-14 h-14 text-chart-4/15 animate-float" style={{ animationDelay: '5s' }} />
         
         {/* Sliding dots */}
         <div className="absolute top-[35%] left-0 w-3 h-3 bg-primary/30 rounded-full animate-slide-horizontal" />
