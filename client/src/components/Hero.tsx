@@ -1,10 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star } from 'lucide-react';
-import childrenImg1 from '@assets/stock_images/happy_saudi_children_ed8a4f03.jpg';
-import childrenImg2 from '@assets/stock_images/happy_saudi_children_45736d19.jpg';
-import motherImg from '@assets/stock_images/happy_saudi_mother_s_e1179210.jpg';
-import fatherImg from '@assets/stock_images/happy_saudi_father_s_1549a1c2.jpg';
+import childCenter from '@assets/stock_images/middle_eastern_child_c7117611.jpg';
+import child1 from '@assets/stock_images/middle_eastern_child_9eb3a7e2.jpg';
+import child2 from '@assets/stock_images/middle_eastern_child_cc9cde88.jpg';
+import mother1 from '@assets/stock_images/arab_middle_eastern__5c938089.jpg';
+import mother2 from '@assets/stock_images/arab_middle_eastern__7d4ba993.jpg';
+import father1 from '@assets/stock_images/arab_middle_eastern__257100f6.jpg';
+import father2 from '@assets/stock_images/arab_middle_eastern__26eedc02.jpg';
 
 export default function Hero() {
   const { t, language, formatNumber } = useLanguage();
@@ -29,18 +32,76 @@ export default function Hero() {
         <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-chart-2/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-40 right-[20%] w-48 h-48 bg-chart-4/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
         
-        {/* Happy Saudi People - Circled Images */}
-        <div className="absolute top-[15%] left-[5%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
-          <img src={childrenImg1} alt="Happy children" className="w-full h-full object-cover" />
+        {/* Network Design - Kindergartner in Center with Connected Parents & Children */}
+        
+        {/* Animated Connection Lines */}
+        <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+          {/* Lines from center to surrounding people */}
+          <line x1="50%" y1="50%" x2="15%" y2="25%" stroke="url(#gradient1)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" opacity="0.4" />
+          <line x1="50%" y1="50%" x2="85%" y2="30%" stroke="url(#gradient2)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} opacity="0.4" />
+          <line x1="50%" y1="50%" x2="18%" y2="70%" stroke="url(#gradient3)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} opacity="0.4" />
+          <line x1="50%" y1="50%" x2="82%" y2="75%" stroke="url(#gradient4)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1.5s' }} opacity="0.4" />
+          <line x1="50%" y1="50%" x2="12%" y2="45%" stroke="url(#gradient5)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '2s' }} opacity="0.4" />
+          <line x1="50%" y1="50%" x2="88%" y2="52%" stroke="url(#gradient6)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '2.5s' }} opacity="0.4" />
+          
+          {/* Gradient Definitions */}
+          <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+            </linearGradient>
+            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--chart-2))" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="hsl(var(--chart-2))" stopOpacity="0.1" />
+            </linearGradient>
+            <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--chart-4))" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="hsl(var(--chart-4))" stopOpacity="0.1" />
+            </linearGradient>
+            <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--chart-3))" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="hsl(var(--chart-3))" stopOpacity="0.1" />
+            </linearGradient>
+            <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+            </linearGradient>
+            <linearGradient id="gradient6" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--chart-2))" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="hsl(var(--chart-2))" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        {/* Animated Dots on Connection Lines */}
+        <div className="absolute top-[37.5%] left-[32.5%] w-2 h-2 bg-primary rounded-full animate-ping" style={{ animationDelay: '0.3s', zIndex: 2 }} />
+        <div className="absolute top-[40%] right-[32.5%] w-2 h-2 bg-chart-2 rounded-full animate-ping" style={{ animationDelay: '0.8s', zIndex: 2 }} />
+        <div className="absolute bottom-[40%] left-[34%] w-2 h-2 bg-chart-4 rounded-full animate-ping" style={{ animationDelay: '1.3s', zIndex: 2 }} />
+        <div className="absolute bottom-[37.5%] right-[34%] w-2 h-2 bg-chart-3 rounded-full animate-ping" style={{ animationDelay: '1.8s', zIndex: 2 }} />
+
+        {/* Center - Kindergartner (Main Focus) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full overflow-hidden border-4 border-primary shadow-2xl z-10 ring-4 ring-primary/20 animate-float-slow">
+          <img src={childCenter} alt="Kindergartner" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[25%] right-[8%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
-          <img src={motherImg} alt="Happy mother" className="w-full h-full object-cover" />
+
+        {/* Surrounding Network - Parents & Children */}
+        <div className="absolute top-[25%] left-[15%] w-20 h-20 rounded-full overflow-hidden border-3 border-primary/40 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s', zIndex: 3 }}>
+          <img src={child1} alt="Child" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute bottom-[30%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
-          <img src={fatherImg} alt="Happy father" className="w-full h-full object-cover" />
+        <div className="absolute top-[30%] right-[15%] w-22 h-22 rounded-full overflow-hidden border-3 border-chart-2/40 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1s', zIndex: 3 }}>
+          <img src={mother1} alt="Mother" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute bottom-[20%] right-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
-          <img src={childrenImg2} alt="Happy children" className="w-full h-full object-cover" />
+        <div className="absolute bottom-[30%] left-[18%] w-20 h-20 rounded-full overflow-hidden border-3 border-chart-4/40 shadow-xl animate-float" style={{ animationDelay: '1.5s', zIndex: 3 }}>
+          <img src={father1} alt="Father" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-[25%] right-[18%] w-22 h-22 rounded-full overflow-hidden border-3 border-chart-3/40 shadow-xl animate-float-slow" style={{ animationDelay: '2s', zIndex: 3 }}>
+          <img src={child2} alt="Child" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[45%] left-[12%] w-18 h-18 rounded-full overflow-hidden border-3 border-primary/40 shadow-xl animate-float-diagonal" style={{ animationDelay: '2.5s', zIndex: 3 }}>
+          <img src={mother2} alt="Mother" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[52%] right-[12%] w-18 h-18 rounded-full overflow-hidden border-3 border-chart-2/40 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '3s', zIndex: 3 }}>
+          <img src={father2} alt="Father" className="w-full h-full object-cover" />
         </div>
         
         {/* Small floating shapes */}
