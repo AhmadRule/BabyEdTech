@@ -110,13 +110,14 @@ server/
 - Default credentials show warning in development
 
 ## Recent Changes
-- 2025-10-09: Added tech-focused design elements:
-  - iPhone mockups in Hero section with rotation animations
-  - Tech pattern background overlay
-  - Grid pattern in Features section with "Powered by Technology" badge
-  - New Platform Showcase section with tablet mockup
-  - Multi-platform icons (Mobile, Tablet, Web, Cloud)
-  - Enhanced animations and gradient effects throughout
+- 2025-10-09: Reverted to clean, professional design (inspired by Brightwheel):
+  - Removed #0183F1 background from Hero (restored subtle gradient)
+  - Removed "Made with 💙 in Saudi Arabia" badge for cleaner aesthetic
+  - Removed all device mockups (iPhone, tablet/coffee images)
+  - Simplified Hero section with centered text layout
+  - Platform Showcase now displays 4 centered cards (no mockup images)
+  - Kept subtle motion graphics (gradients, pulse animations, hover effects)
+  - Numbers always display in English (Western numerals) even when Arabic language is selected
 - 2025-10-09: Implemented admin logo customization feature with file upload
 - Fixed multer error handling to prevent server crashes
 - Added security warnings for default admin credentials
