@@ -5,6 +5,8 @@ import saudiBoy from '@assets/saudi_boy.png';
 import saudiFather from '@assets/saudi_father.png';
 import saudiMother from '@assets/saudi_mother.png';
 import saudiBaby from '@assets/saudi_baby.png';
+import toddlerNursery from '@assets/toddler_nursery.png';
+import nurseryClassroom from '@assets/nursery_classroom.png';
 import ipadMockup from '@assets/ipad_mockup.png';
 
 export default function Hero() {
@@ -42,6 +44,12 @@ export default function Hero() {
         </div>
         <div className="absolute top-[30%] right-[6%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
           <img src={saudiFather} alt="Happy father" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[25%] left-[15%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-slow" style={{ animationDelay: '3.5s' }}>
+          <img src={toddlerNursery} alt="Toddler in nursery" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[18%] right-[20%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '4s' }}>
+          <img src={nurseryClassroom} alt="Nursery classroom" className="w-full h-full object-cover" />
         </div>
         
         {/* Small floating shapes */}
