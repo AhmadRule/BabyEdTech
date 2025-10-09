@@ -70,7 +70,7 @@ export default function AdminLogo() {
 
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      return await apiRequest('/api/admin/logout', { method: 'POST' });
+      return await apiRequest('POST', '/api/admin/logout');
     },
     onSuccess: () => {
       setLocation('/admin/login');

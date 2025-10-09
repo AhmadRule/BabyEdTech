@@ -20,10 +20,7 @@ export default function AdminLogin() {
     setIsLoading(true);
 
     try {
-      await apiRequest('/api/admin/login', {
-        method: 'POST',
-        body: JSON.stringify({ username, password }),
-      });
+      await apiRequest('POST', '/api/admin/login', { username, password });
 
       toast({
         title: 'Success',

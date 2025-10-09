@@ -1,8 +1,31 @@
+import { useQuery } from '@tanstack/react-query';
+
 interface LogoProps {
   className?: string;
 }
 
+interface LogoData {
+  hasCustomLogo: boolean;
+  logoUrl: string | null;
+}
+
 export default function Logo({ className = "" }: LogoProps) {
+  const { data: logoData } = useQuery<LogoData>({
+    queryKey: ['/api/logo'],
+  });
+
+  if (logoData?.hasCustomLogo && logoData.logoUrl) {
+    return (
+      <div className={`flex items-center ${className}`}>
+        <img 
+          src={logoData.logoUrl} 
+          alt="MyBaby Logo" 
+          className="h-10 md:h-12 w-auto object-contain"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
