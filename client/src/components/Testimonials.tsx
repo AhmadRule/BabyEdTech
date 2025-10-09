@@ -76,9 +76,31 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-chart-4/10 to-chart-3/10">
+    <section className="relative py-16 md:py-24 bg-gradient-to-br from-chart-4/10 to-chart-3/10 overflow-hidden">
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 25% 25%, hsl(var(--chart-4) / 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, hsl(var(--chart-3) / 0.3) 0%, transparent 50%)
+          `
+        }}
+      />
+
+      <div className="absolute top-20 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-ping" style={{ animationDelay: '0.3s' }} />
+      <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-chart-2/30 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-chart-4/30 rounded-full animate-ping" style={{ animationDelay: '1.5s' }} />
+
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
+            <div className="flex gap-1">
+              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
+            </div>
+            <span className="text-sm font-medium text-primary">Customer Success Stories</span>
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4" data-testid="text-testimonials-title">
             {language === 'en' ? t('testimonialsTitle') : t('testimonialsTitleAr')}
           </h2>
