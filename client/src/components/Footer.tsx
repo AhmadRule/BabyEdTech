@@ -1,6 +1,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Mail, Phone } from 'lucide-react';
 import { SiInstagram, SiLinkedin } from 'react-icons/si';
+import Logo from './Logo';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -10,9 +11,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
         <div className="grid md:grid-cols-3 gap-8 md:gap-12 mb-8">
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-4" data-testid="text-footer-logo">
-              MyBaby
-            </h3>
+            <Logo className="mb-4" data-testid="text-footer-logo" />
             <p className="text-sm text-muted-foreground">
               The all-in-one platform for nurseries and kindergartens
             </p>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Logo from './Logo';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,9 +31,7 @@ export default function Navigation() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="text-2xl md:text-3xl font-bold text-primary" data-testid="logo-mybaby">
-            MyBaby
-          </div>
+          <Logo data-testid="logo-mybaby" />
 
           <div className="hidden md:flex items-center gap-8">
             {menuItems.map(item => (
