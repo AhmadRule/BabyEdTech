@@ -77,6 +77,10 @@ export default function Hero() {
             {t('heroTitle')}
           </h1>
 
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary rounded-full backdrop-blur-sm">
+            <span className="text-lg md:text-xl font-medium">{t('heroTagline')}</span>
+          </div>
+
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtext">
             {t('heroSubtext')}
           </p>
