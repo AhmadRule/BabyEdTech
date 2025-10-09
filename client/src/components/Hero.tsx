@@ -69,8 +69,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative z-10">
         <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
-            <div>{t('heroTitle1')}</div>
-            <div>{t('heroTitle2')}</div>
+            {t('heroTitle1')}
           </h1>
 
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary rounded-full backdrop-blur-sm">
