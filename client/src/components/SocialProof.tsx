@@ -2,7 +2,7 @@ import { Star, Users, Building2, Clock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function SocialProof() {
-  const { language } = useLanguage();
+  const { language, formatNumber } = useLanguage();
 
   const stats = [
     {
@@ -53,7 +53,7 @@ export default function SocialProof() {
                   </div>
                 </div>
                 <div className="text-3xl md:text-4xl font-bold text-foreground mb-1" data-testid={`stat-value-${index + 1}`}>
-                  {stat.value}
+                  {formatNumber(stat.value)}
                 </div>
                 <div className="text-sm text-muted-foreground" data-testid={`stat-label-${index + 1}`}>
                   {language === 'en' ? stat.labelEn : stat.labelAr}
@@ -70,7 +70,7 @@ export default function SocialProof() {
                 <Star key={star} className="h-5 w-5 fill-primary text-primary" />
               ))}
             </div>
-            <span className="text-sm font-medium text-muted-foreground">5,000+ Reviews</span>
+            <span className="text-sm font-medium text-muted-foreground">{formatNumber('5,000+')} Reviews</span>
           </div>
         </div>
       </div>

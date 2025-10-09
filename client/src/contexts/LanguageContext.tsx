@@ -6,6 +6,7 @@ interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
   t: (key: string) => string;
+  formatNumber: (num: string | number) => string;
 }
 
 const translations = {
@@ -45,7 +46,9 @@ const translations = {
     footerFeatures: 'Features',
     footerPricing: 'Pricing',
     footerContact: 'Contact',
-    footerCopyright: '© 2025 MyBaby | Made with 💙 in Saudi Arabia'
+    footerCopyright: '© 2025 MyBaby | Made with 💙 in Saudi Arabia',
+    madeInSaudiEn: 'Made with 💙 in Saudi Arabia',
+    madeInSaudiAr: 'صُنع بـ 💙 في السعودية'
   },
   ar: {
     home: 'الرئيسية',
@@ -83,7 +86,9 @@ const translations = {
     footerFeatures: 'المميزات',
     footerPricing: 'الأسعار',
     footerContact: 'اتصل بنا',
-    footerCopyright: '© 2025 MyBaby | صنع بـ 💙 في السعودية'
+    footerCopyright: '© 2025 MyBaby | صنع بـ 💙 في السعودية',
+    madeInSaudiEn: 'Made with 💙 in Saudi Arabia',
+    madeInSaudiAr: 'صُنع بـ 💙 في السعودية'
   }
 };
 
@@ -106,11 +111,24 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return translations[language][key as keyof typeof translations['en']] || key;
   };
 
+  const formatNumber = (num: string | number): string => {
+    return toEnglishNumbers(num);
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, t, formatNumber }}>
       {children}
     </LanguageContext.Provider>
   );
+}
+
+export function toEnglishNumbers(str: string | number): string {
+  const arabicToEnglish: { [key: string]: string } = {
+    '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4',
+    '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9'
+  };
+  
+  return String(str).replace(/[٠-٩]/g, (d) => arabicToEnglish[d]);
 }
 
 export function useLanguage() {
