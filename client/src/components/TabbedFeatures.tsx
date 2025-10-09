@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
-import { DollarSign, MessageSquare, TrendingUp, Shield, Clock, Users } from 'lucide-react';
+import { DollarSign, MessageSquare, TrendingUp, Shield, Clock, Users, Receipt, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function TabbedFeatures() {
@@ -113,12 +113,72 @@ export default function TabbedFeatures() {
                     </div>
                   </div>
                   <div className="relative">
-                    <div className={`aspect-square rounded-2xl bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/5 p-8 flex items-center justify-center`}>
-                      <div className="w-full h-full bg-background rounded-xl shadow-lg p-6 flex flex-col gap-4">
-                        <div className="h-8 bg-muted rounded-lg w-3/4" />
-                        <div className="flex-1 bg-muted/50 rounded-lg" />
-                        <div className="h-12 bg-muted rounded-lg" />
-                      </div>
+                    <div className={`aspect-square rounded-2xl bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/5 p-8 flex items-center justify-center overflow-hidden`}>
+                      {key === 'billing' ? (
+                        <div className="w-full h-full relative">
+                          {/* Animated Bills/Invoices */}
+                          <div className="absolute top-[10%] left-[15%] w-[70%] bg-background rounded-xl shadow-xl p-4 border-2 border-green-500/30 animate-float" style={{ animationDelay: '0s' }}>
+                            <div className="flex items-center justify-between mb-3">
+                              <div className="flex items-center gap-2">
+                                <Receipt className="h-5 w-5 text-chart-1" />
+                                <div className="text-sm font-semibold text-foreground">INV-2024-001</div>
+                              </div>
+                              <CheckCircle className="h-5 w-5 text-green-500" />
+                            </div>
+                            <div className="space-y-2">
+                              <div className="h-2 bg-muted rounded w-3/4" />
+                              <div className="h-2 bg-muted rounded w-1/2" />
+                            </div>
+                            <div className="mt-3 pt-3 border-t border-border">
+                              <div className="text-lg font-bold text-green-600">$350.00</div>
+                            </div>
+                          </div>
+
+                          <div className="absolute top-[35%] right-[10%] w-[65%] bg-background rounded-xl shadow-xl p-4 border-2 border-blue-500/30 animate-float-diagonal" style={{ animationDelay: '1s' }}>
+                            <div className="flex items-center justify-between mb-3">
+                              <div className="flex items-center gap-2">
+                                <Receipt className="h-5 w-5 text-chart-2" />
+                                <div className="text-sm font-semibold text-foreground">INV-2024-002</div>
+                              </div>
+                              <CheckCircle className="h-5 w-5 text-blue-500" />
+                            </div>
+                            <div className="space-y-2">
+                              <div className="h-2 bg-muted rounded w-2/3" />
+                              <div className="h-2 bg-muted rounded w-1/2" />
+                            </div>
+                            <div className="mt-3 pt-3 border-t border-border">
+                              <div className="text-lg font-bold text-blue-600">$280.00</div>
+                            </div>
+                          </div>
+
+                          <div className="absolute bottom-[15%] left-[20%] w-[60%] bg-background rounded-xl shadow-xl p-4 border-2 border-amber-500/30 animate-float-slow" style={{ animationDelay: '2s' }}>
+                            <div className="flex items-center justify-between mb-3">
+                              <div className="flex items-center gap-2">
+                                <Receipt className="h-5 w-5 text-chart-4" />
+                                <div className="text-sm font-semibold text-foreground">INV-2024-003</div>
+                              </div>
+                              <AlertCircle className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <div className="space-y-2">
+                              <div className="h-2 bg-muted rounded w-3/4" />
+                              <div className="h-2 bg-muted rounded w-1/2" />
+                            </div>
+                            <div className="mt-3 pt-3 border-t border-border">
+                              <div className="text-lg font-bold text-amber-600">$420.00</div>
+                            </div>
+                          </div>
+
+                          {/* Floating coins/money icons */}
+                          <DollarSign className="absolute top-[20%] right-[5%] h-8 w-8 text-green-500/30 animate-float-diagonal-reverse" style={{ animationDelay: '0.5s' }} />
+                          <DollarSign className="absolute bottom-[25%] right-[15%] h-6 w-6 text-blue-500/30 animate-float" style={{ animationDelay: '1.5s' }} />
+                        </div>
+                      ) : (
+                        <div className="w-full h-full bg-background rounded-xl shadow-lg p-6 flex flex-col gap-4">
+                          <div className="h-8 bg-muted rounded-lg w-3/4" />
+                          <div className="flex-1 bg-muted/50 rounded-lg" />
+                          <div className="h-12 bg-muted rounded-lg" />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
