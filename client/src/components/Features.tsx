@@ -45,9 +45,29 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" className="py-16 md:py-24">
+    <section id="features" className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background -z-10" />
+      
+      <div 
+        className="absolute inset-0 -z-10 opacity-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, hsl(var(--primary) / 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(var(--primary) / 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }}
+      />
+
+      <div className="absolute top-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
+            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-primary">Powered by Technology</span>
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4" data-testid="text-features-title">
             {language === 'en' ? t('featuresTitle') : t('featuresTitleAr')}
           </h2>
@@ -59,11 +79,14 @@ export default function Features() {
             return (
               <Card
                 key={index}
-                className={`p-6 hover-elevate active-elevate-2 transition-all duration-300 bg-gradient-to-br ${feature.gradient}`}
+                className={`relative p-6 hover-elevate active-elevate-2 transition-all duration-300 bg-gradient-to-br ${feature.gradient} border-2 border-transparent hover:border-${feature.iconColor.replace('text-', 'border-')}/20 overflow-visible`}
                 data-testid={`card-feature-${index + 1}`}
               >
-                <div className={`w-14 h-14 ${feature.iconBg} rounded-2xl flex items-center justify-center mb-4`}>
+                <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-xl" />
+                
+                <div className={`relative w-14 h-14 ${feature.iconBg} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
                   <Icon className={`h-7 w-7 ${feature.iconColor}`} />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent" />
                 </div>
                 
                 <h3 className="text-lg font-semibold text-foreground mb-2" data-testid={`text-feature-${index + 1}-title`}>
@@ -73,6 +96,8 @@ export default function Features() {
                 <p className="text-sm text-muted-foreground" data-testid={`text-feature-${index + 1}-desc`}>
                   {t(feature.descKey)}
                 </p>
+
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </Card>
             );
           })}

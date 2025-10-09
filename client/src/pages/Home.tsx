@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import SocialProof from '@/components/SocialProof';
 import Features from '@/components/Features';
+import PlatformShowcase from '@/components/PlatformShowcase';
 import TabbedFeatures from '@/components/TabbedFeatures';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <SocialProof />
         <Features />
+        <PlatformShowcase />
         <TabbedFeatures />
         <Testimonials />
         <CTA />

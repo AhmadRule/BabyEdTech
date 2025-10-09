@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, ArrowRight } from 'lucide-react';
+import iphoneMockup1 from '@assets/stock_images/iphone_mockup_app_in_f76c2a08.jpg';
+import iphoneMockup2 from '@assets/stock_images/iphone_mockup_app_in_0700dd30.jpg';
+import techBg from '@assets/stock_images/abstract_technology__4f7c8289.jpg';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -14,6 +17,11 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-4/5 to-chart-3/5 -z-10" />
+      
+      <div 
+        className="absolute inset-0 opacity-5 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: `url(${techBg})` }}
+      />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -62,39 +70,33 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative bg-gradient-to-br from-chart-1/20 to-chart-2/20 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-background rounded-xl p-4 shadow-lg hover-elevate">
-                  <div className="w-12 h-12 bg-chart-1/20 rounded-lg mb-3 flex items-center justify-center">
-                    <div className="w-6 h-6 bg-primary rounded" />
-                  </div>
-                  <div className="h-3 bg-muted rounded w-3/4 mb-2" />
-                  <div className="h-2 bg-muted/60 rounded w-1/2" />
-                </div>
-                <div className="bg-background rounded-xl p-4 shadow-lg hover-elevate">
-                  <div className="w-12 h-12 bg-chart-2/20 rounded-lg mb-3 flex items-center justify-center">
-                    <div className="w-6 h-6 bg-chart-2 rounded" />
-                  </div>
-                  <div className="h-3 bg-muted rounded w-3/4 mb-2" />
-                  <div className="h-2 bg-muted/60 rounded w-1/2" />
-                </div>
-                <div className="bg-background rounded-xl p-4 shadow-lg hover-elevate">
-                  <div className="w-12 h-12 bg-chart-3/20 rounded-lg mb-3 flex items-center justify-center">
-                    <div className="w-6 h-6 bg-chart-3 rounded" />
-                  </div>
-                  <div className="h-3 bg-muted rounded w-3/4 mb-2" />
-                  <div className="h-2 bg-muted/60 rounded w-1/2" />
-                </div>
-                <div className="bg-background rounded-xl p-4 shadow-lg hover-elevate">
-                  <div className="w-12 h-12 bg-chart-4/20 rounded-lg mb-3 flex items-center justify-center">
-                    <div className="w-6 h-6 bg-chart-4 rounded" />
-                  </div>
-                  <div className="h-3 bg-muted rounded w-3/4 mb-2" />
-                  <div className="h-2 bg-muted/60 rounded w-1/2" />
-                </div>
+          <div className="relative flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-chart-2/20 to-chart-4/20 blur-3xl opacity-50 rounded-full" />
+            
+            <div className="relative flex items-center justify-center gap-4">
+              <div className="relative transform -rotate-6 hover:rotate-0 transition-transform duration-500 hover-elevate">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-chart-2/30 blur-xl rounded-3xl" />
+                <img
+                  src={iphoneMockup1}
+                  alt="MyBaby App Interface"
+                  className="relative h-[400px] md:h-[500px] w-auto object-contain drop-shadow-2xl rounded-3xl"
+                  data-testid="img-hero-mockup-1"
+                />
+              </div>
+
+              <div className="relative transform rotate-6 hover:rotate-0 transition-transform duration-500 hover-elevate hidden sm:block">
+                <div className="absolute inset-0 bg-gradient-to-br from-chart-3/30 to-chart-4/30 blur-xl rounded-3xl" />
+                <img
+                  src={iphoneMockup2}
+                  alt="MyBaby Parent Portal"
+                  className="relative h-[350px] md:h-[450px] w-auto object-contain drop-shadow-2xl rounded-3xl"
+                  data-testid="img-hero-mockup-2"
+                />
               </div>
             </div>
+
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-chart-1/20 rounded-full blur-2xl animate-pulse" />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-chart-3/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
         </div>
       </div>
