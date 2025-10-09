@@ -184,13 +184,117 @@ export default function TabbedFeatures() {
                           <DollarSign className="absolute top-[20%] right-[5%] h-8 w-8 text-green-500/30 animate-float-diagonal-reverse" style={{ animationDelay: '0.5s' }} />
                           <DollarSign className="absolute bottom-[25%] right-[15%] h-6 w-6 text-blue-500/30 animate-float" style={{ animationDelay: '1.5s' }} />
                         </div>
-                      ) : (
-                        <div className="w-full h-full bg-background rounded-xl shadow-lg p-6 flex flex-col gap-4">
-                          <div className="h-8 bg-muted rounded-lg w-3/4" />
-                          <div className="flex-1 bg-muted/50 rounded-lg" />
-                          <div className="h-12 bg-muted rounded-lg" />
+                      ) : key === 'communication' ? (
+                        <div className="w-full h-full relative">
+                          {/* Animated Message Bubbles */}
+                          <div className="absolute top-[10%] left-[10%] max-w-[70%] bg-primary/10 rounded-2xl rounded-tl-none p-3 shadow-lg animate-float" style={{ animationDelay: '0s' }}>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Users className="h-4 w-4 text-primary" />
+                              <span className="text-xs font-semibold text-primary">
+                                {language === 'en' ? 'Ms. Sarah' : 'المعلمة سارة'}
+                              </span>
+                            </div>
+                            <p className="text-sm text-foreground">
+                              {language === 'en' ? 'Ahmed had a great day!' : 'أحمد قضى يوم رائع!'}
+                            </p>
+                          </div>
+
+                          <div className="absolute top-[35%] right-[10%] max-w-[65%] bg-chart-2/10 rounded-2xl rounded-tr-none p-3 shadow-lg animate-float-diagonal" style={{ animationDelay: '1s' }}>
+                            <div className="flex items-center gap-2 mb-2">
+                              <MessageSquare className="h-4 w-4 text-chart-2" />
+                              <span className="text-xs font-semibold text-chart-2">
+                                {language === 'en' ? 'Parent' : 'ولي الأمر'}
+                              </span>
+                            </div>
+                            <p className="text-sm text-foreground">
+                              {language === 'en' ? 'Thank you for the update!' : 'شكراً على التحديث!'}
+                            </p>
+                          </div>
+
+                          <div className="absolute bottom-[15%] left-[15%] max-w-[60%] bg-chart-4/10 rounded-2xl rounded-tl-none p-3 shadow-lg animate-float-slow" style={{ animationDelay: '2s' }}>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Shield className="h-4 w-4 text-chart-4" />
+                              <span className="text-xs font-semibold text-chart-4">
+                                {language === 'en' ? 'Auto-Translated' : 'ترجمة تلقائية'}
+                              </span>
+                            </div>
+                            <p className="text-sm text-foreground">
+                              {language === 'en' ? 'See you tomorrow! 👋' : 'نراكم غداً! 👋'}
+                            </p>
+                          </div>
+
+                          {/* Floating message icons */}
+                          <MessageSquare className="absolute top-[25%] right-[5%] h-8 w-8 text-primary/20 animate-float-diagonal-reverse" style={{ animationDelay: '0.5s' }} />
+                          <MessageSquare className="absolute bottom-[30%] right-[20%] h-6 w-6 text-chart-2/20 animate-float" style={{ animationDelay: '1.5s' }} />
                         </div>
-                      )}
+                      ) : key === 'management' ? (
+                        <div className="w-full h-full relative">
+                          {/* Animated Staff Cards/Schedule */}
+                          <div className="absolute top-[10%] left-[12%] w-[75%] bg-background rounded-xl shadow-xl p-3 border-2 border-chart-3/30 animate-float" style={{ animationDelay: '0s' }}>
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="w-10 h-10 rounded-full bg-chart-3/20 flex items-center justify-center">
+                                <Users className="h-5 w-5 text-chart-3" />
+                              </div>
+                              <div className="flex-1">
+                                <div className="h-3 bg-muted rounded w-2/3 mb-1" />
+                                <div className="h-2 bg-muted/60 rounded w-1/3" />
+                              </div>
+                            </div>
+                            <div className="flex gap-2">
+                              <div className="flex-1 h-6 bg-chart-3/10 rounded flex items-center justify-center">
+                                <Clock className="h-3 w-3 text-chart-3" />
+                              </div>
+                              <div className="flex-1 h-6 bg-green-500/10 rounded flex items-center justify-center">
+                                <CheckCircle className="h-3 w-3 text-green-600" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="absolute top-[40%] right-[8%] w-[70%] bg-background rounded-xl shadow-xl p-3 border-2 border-blue-500/30 animate-float-diagonal" style={{ animationDelay: '1s' }}>
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                <Users className="h-5 w-5 text-blue-600" />
+                              </div>
+                              <div className="flex-1">
+                                <div className="h-3 bg-muted rounded w-1/2 mb-1" />
+                                <div className="h-2 bg-muted/60 rounded w-1/4" />
+                              </div>
+                            </div>
+                            <div className="flex gap-2">
+                              <div className="flex-1 h-6 bg-blue-500/10 rounded flex items-center justify-center">
+                                <Clock className="h-3 w-3 text-blue-600" />
+                              </div>
+                              <div className="flex-1 h-6 bg-amber-500/10 rounded flex items-center justify-center">
+                                <AlertCircle className="h-3 w-3 text-amber-600" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="absolute bottom-[12%] left-[18%] w-[65%] bg-background rounded-xl shadow-xl p-3 border-2 border-primary/30 animate-float-slow" style={{ animationDelay: '2s' }}>
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                                <Users className="h-5 w-5 text-primary" />
+                              </div>
+                              <div className="flex-1">
+                                <div className="h-3 bg-muted rounded w-3/5 mb-1" />
+                                <div className="h-2 bg-muted/60 rounded w-2/5" />
+                              </div>
+                            </div>
+                            <div className="flex gap-2">
+                              <div className="flex-1 h-6 bg-primary/10 rounded flex items-center justify-center">
+                                <TrendingUp className="h-3 w-3 text-primary" />
+                              </div>
+                              <div className="flex-1 h-6 bg-green-500/10 rounded flex items-center justify-center">
+                                <CheckCircle className="h-3 w-3 text-green-600" />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Floating staff icons */}
+                          <Users className="absolute top-[22%] right-[3%] h-8 w-8 text-chart-3/20 animate-float-diagonal-reverse" style={{ animationDelay: '0.5s' }} />
+                          <Clock className="absolute bottom-[28%] right-[15%] h-6 w-6 text-primary/20 animate-float" style={{ animationDelay: '1.5s' }} />
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
