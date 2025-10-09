@@ -6,6 +6,13 @@ const scryptAsync = promisify(scrypt);
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
+if (!process.env.ADMIN_PASSWORD_HASH && !process.env.ADMIN_PASSWORD) {
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('SECURITY ERROR: ADMIN_PASSWORD or ADMIN_PASSWORD_HASH must be set in production!');
+  }
+  console.warn('⚠️  WARNING: No ADMIN_PASSWORD or ADMIN_PASSWORD_HASH set. Using default credentials (admin/admin123). This is insecure for production!');
+}
+
 export async function hashPassword(password: string): Promise<string> {
   const salt = randomBytes(16).toString('hex');
   const buf = (await scryptAsync(password, salt, 64)) as Buffer;

@@ -1,4 +1,5 @@
 import type { Express } from "express";
+import express from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { verifyAdminCredentials, generateSessionToken } from "./lib/adminAuth";
@@ -38,7 +39,7 @@ const loginSchema = z.object({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  app.use('/uploads', require('express').static(uploadsDir));
+  app.use('/uploads', express.static(uploadsDir));
 
   app.post('/api/admin/login', async (req, res) => {
     try {
@@ -84,23 +85,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ authenticated: true });
   });
 
-  app.post('/api/admin/logo', requireAdmin, upload.single('logo'), async (req, res) => {
-    try {
-      if (!req.file) {
-        return res.status(400).json({ error: 'No file uploaded' });
+  app.post('/api/admin/logo', requireAdmin, (req, res) => {
+    upload.single('logo')(req, res, async (err) => {
+      if (err) {
+        if (err instanceof multer.MulterError) {
+          if (err.code === 'LIMIT_FILE_SIZE') {
+            return res.status(400).json({ error: 'File size exceeds 2MB limit' });
+          }
+          return res.status(400).json({ error: `Upload error: ${err.message}` });
+        }
+        return res.status(400).json({ error: err.message || 'Upload failed' });
       }
 
-      const logoPath = `/uploads/${req.file.filename}`;
-      
-      await storage.updateBrandingSettings({ logoPath });
+      try {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No file uploaded' });
+        }
 
-      res.json({ 
-        success: true, 
-        logoPath 
-      });
-    } catch (error: any) {
-      res.status(400).json({ error: error.message || 'Upload failed' });
-    }
+        const logoPath = `/uploads/${req.file.filename}`;
+        
+        await storage.updateBrandingSettings({ logoPath });
+
+        res.json({ 
+          success: true, 
+          logoPath 
+        });
+      } catch (error: any) {
+        res.status(400).json({ error: error.message || 'Upload failed' });
+      }
+    });
   });
 
   app.get('/api/logo', async (req, res) => {
