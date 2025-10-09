@@ -45,7 +45,8 @@ const translations = {
     footerFeatures: 'Features',
     footerPricing: 'Pricing',
     footerContact: 'Contact',
-    footerCopyright: '© 2025 MyBaby | Made with 💙 in Saudi Arabia'
+    footerCopyright: '© 2025 MyBaby | Made with 💙 in Saudi Arabia',
+    madeInSaudi: 'Made with 💙 in Saudi Arabia'
   },
   ar: {
     home: 'الرئيسية',
@@ -82,7 +83,8 @@ const translations = {
     footerFeatures: 'المميزات',
     footerPricing: 'الأسعار',
     footerContact: 'اتصل بنا',
-    footerCopyright: '© 2025 MyBaby | صنع بـ 💙 في السعودية'
+    footerCopyright: '© 2025 MyBaby | صنع بـ 💙 في السعودية',
+    madeInSaudi: 'صنع بـ 💙 في السعودية'
   }
 };
 
