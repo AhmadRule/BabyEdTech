@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="absolute top-[20%] right-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
           <img src={saudiBoy} alt="Happy boy" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[35%] left-[5%] w-22 h-22 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
+        <div className="absolute top-[35%] left-[5%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
           <img src={saudiMother} alt="Happy mother" className="w-full h-full object-cover" />
         </div>
         <div className="absolute top-[30%] right-[6%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
