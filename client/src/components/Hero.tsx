@@ -30,31 +30,18 @@ export default function Hero() {
         <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-chart-2/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-40 right-[20%] w-48 h-48 bg-chart-4/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
         
-        {/* iPad Mockup with Animated People Photos */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[380px] animate-float-slow pointer-events-auto">
-          {/* iPad Frame */}
-          <div className="relative w-full h-full">
-            <img src={ipadMockup} alt="iPad" className="w-full h-full object-contain drop-shadow-2xl" />
-            
-            {/* Screen Content - Photos Carousel */}
-            <div className="absolute top-[8%] left-[9%] right-[9%] bottom-[8%] bg-white rounded-lg overflow-hidden">
-              {/* Animated Photos Slideshow */}
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '0s' }}>
-                  <img src={saudiBaby} alt="Happy baby" className="w-full h-full object-cover" />
-                </div>
-                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '3s' }}>
-                  <img src={saudiBoy} alt="Happy boy" className="w-full h-full object-cover" />
-                </div>
-                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '6s' }}>
-                  <img src={saudiMother} alt="Happy mother" className="w-full h-full object-cover" />
-                </div>
-                <div className="absolute inset-0 animate-fade-slide" style={{ animationDelay: '9s' }}>
-                  <img src={saudiFather} alt="Happy father" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Floating Circled People Photos */}
+        <div className="absolute top-[15%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
+          <img src={saudiBaby} alt="Happy baby" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[20%] right-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
+          <img src={saudiBoy} alt="Happy boy" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[35%] left-[5%] w-22 h-22 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
+          <img src={saudiMother} alt="Happy mother" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[30%] right-[6%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
+          <img src={saudiFather} alt="Happy father" className="w-full h-full object-cover" />
         </div>
         
         {/* Small floating shapes */}
