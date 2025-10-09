@@ -53,7 +53,7 @@ export default function CTA() {
           
           <div className="relative z-10 max-w-3xl mx-auto space-y-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground" data-testid="text-cta-title">
-              {language === 'en' ? t('ctaTitle') : t('ctaTitleAr')}
+              {t('ctaTitle')}
             </h2>
 
             <Button
@@ -64,7 +64,7 @@ export default function CTA() {
               data-testid="button-schedule-demo"
             >
               <Calendar className="h-5 w-5" />
-              {language === 'en' ? t('scheduleDemo') : t('scheduleDemoAr')}
+              {t('scheduleDemo')}
             </Button>
           </div>
         </div>

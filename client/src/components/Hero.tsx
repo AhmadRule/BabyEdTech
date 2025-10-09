@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Sparkles, ArrowRight, Circle, Square, Triangle } from 'lucide-react';
+import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star } from 'lucide-react';
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, language, formatNumber } = useLanguage();
 
   const handleGetDemo = () => {
     console.log('Get Demo clicked');
@@ -14,6 +14,9 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-4/5 to-chart-3/5 -z-10" />
+      
+      {/* Decorative mesh gradient overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,173,239,0.15),transparent_50%),radial-gradient(circle_at_70%_60%,rgba(137,174,255,0.15),transparent_50%)] -z-10" />
       
       {/* Smooth Moving Graphics */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -42,26 +45,16 @@ export default function Hero() {
         <div className="text-center space-y-6 md:space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full backdrop-blur-sm">
             <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">EdTech for Saudi Nurseries</span>
+            <span className="text-sm font-medium text-primary">{t('edtechBadge')}</span>
           </div>
           
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight" data-testid="text-hero-title-ar">
-              {t('heroTitleAr')}
-            </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-muted-foreground" data-testid="text-hero-title-en">
-              {t('heroTitleEn')}
-            </h2>
-          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
+            {t('heroTitle')}
+          </h1>
 
-          <div className="space-y-3 max-w-3xl mx-auto">
-            <p className="text-base md:text-lg text-muted-foreground" data-testid="text-hero-subtext-en">
-              {t('heroSubtextEn')}
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground" data-testid="text-hero-subtext-ar">
-              {t('heroSubtextAr')}
-            </p>
-          </div>
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtext">
+            {t('heroSubtext')}
+          </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -81,6 +74,65 @@ export default function Hero() {
             >
               {t('tryFree')}
             </Button>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto mt-12">
+            {/* Nurseries stat */}
+            <div className="group relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover-elevate transition-all">
+              <div className="absolute -top-3 -right-3 w-16 h-16 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-colors" />
+              <Building2 className="h-8 w-8 text-primary mb-3" />
+              <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-nurseries">
+                {formatNumber('500+')}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {t('nurseries')}
+              </div>
+            </div>
+
+            {/* Parents stat */}
+            <div className="group relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover-elevate transition-all">
+              <div className="absolute -top-3 -right-3 w-16 h-16 bg-chart-2/10 rounded-full blur-xl group-hover:bg-chart-2/20 transition-colors" />
+              <Users className="h-8 w-8 text-chart-2 mb-3" />
+              <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-parents">
+                {formatNumber('10,000+')}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {t('happyParents')}
+              </div>
+            </div>
+
+            {/* Rating stat */}
+            <div className="group relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover-elevate transition-all">
+              <div className="absolute -top-3 -right-3 w-16 h-16 bg-chart-4/10 rounded-full blur-xl group-hover:bg-chart-4/20 transition-colors" />
+              <div className="flex items-center gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                ))}
+              </div>
+              <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-rating">
+                {formatNumber('4.9')}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {t('appStoreRating')}
+              </div>
+            </div>
+          </div>
+
+          {/* Key Benefits */}
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-8 max-w-3xl mx-auto">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-5 w-5 text-primary" />
+              <span>{t('noCreditCard')}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-5 w-5 text-primary" />
+              <span>{t('freeTrial')}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-5 w-5 text-primary" />
+              <span>{t('support247')}</span>
+            </div>
           </div>
         </div>
       </div>

@@ -112,10 +112,10 @@ export default function Testimonials() {
               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
             </div>
-            <span className="text-sm font-medium text-primary">Customer Success Stories</span>
+            <span className="text-sm font-medium text-primary">{t('customerStories')}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4" data-testid="text-testimonials-title">
-            {language === 'en' ? t('testimonialsTitle') : t('testimonialsTitleAr')}
+            {t('testimonialsTitle')}
           </h2>
         </div>
 

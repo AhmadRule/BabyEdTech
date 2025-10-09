@@ -9,7 +9,6 @@ export default function Features() {
     {
       icon: FileText,
       titleKey: 'feature1Title',
-      titleArKey: 'feature1TitleAr',
       descKey: 'feature1Desc',
       gradient: 'from-chart-1/10 to-chart-1/5',
       iconBg: 'bg-chart-1/20',
@@ -18,7 +17,6 @@ export default function Features() {
     {
       icon: MessageCircle,
       titleKey: 'feature2Title',
-      titleArKey: 'feature2TitleAr',
       descKey: 'feature2Desc',
       gradient: 'from-chart-2/10 to-chart-2/5',
       iconBg: 'bg-chart-2/20',
@@ -27,7 +25,6 @@ export default function Features() {
     {
       icon: Users,
       titleKey: 'feature3Title',
-      titleArKey: 'feature3TitleAr',
       descKey: 'feature3Desc',
       gradient: 'from-chart-3/10 to-chart-3/5',
       iconBg: 'bg-chart-3/20',
@@ -36,7 +33,6 @@ export default function Features() {
     {
       icon: BarChart3,
       titleKey: 'feature4Title',
-      titleArKey: 'feature4TitleAr',
       descKey: 'feature4Desc',
       gradient: 'from-chart-4/10 to-chart-4/5',
       iconBg: 'bg-chart-4/20',
@@ -80,10 +76,10 @@ export default function Features() {
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
             <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-primary">Powered by Technology</span>
+            <span className="text-sm font-medium text-primary">{t('poweredByTech')}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4" data-testid="text-features-title">
-            {language === 'en' ? t('featuresTitle') : t('featuresTitleAr')}
+            {t('featuresTitle')}
           </h2>
         </div>
 
@@ -104,7 +100,7 @@ export default function Features() {
                 </div>
                 
                 <h3 className="text-lg font-semibold text-foreground mb-2" data-testid={`text-feature-${index + 1}-title`}>
-                  {t(language === 'en' ? feature.titleKey : feature.titleArKey)}
+                  {t(feature.titleKey)}
                 </h3>
                 
                 <p className="text-sm text-muted-foreground" data-testid={`text-feature-${index + 1}-desc`}>
