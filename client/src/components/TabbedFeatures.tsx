@@ -236,16 +236,22 @@ export default function TabbedFeatures() {
                                 <Users className="h-5 w-5 text-chart-3" />
                               </div>
                               <div className="flex-1">
-                                <div className="h-3 bg-muted rounded w-2/3 mb-1" />
-                                <div className="h-2 bg-muted/60 rounded w-1/3" />
+                                <div className="text-sm font-semibold text-foreground">
+                                  {language === 'en' ? 'Fatima Al-Ahmad' : 'فاطمة الأحمد'}
+                                </div>
+                                <div className="text-xs text-muted-foreground">
+                                  {language === 'en' ? 'Lead Teacher' : 'معلمة رئيسية'}
+                                </div>
                               </div>
                             </div>
                             <div className="flex gap-2">
-                              <div className="flex-1 h-6 bg-chart-3/10 rounded flex items-center justify-center">
+                              <div className="flex-1 h-6 bg-chart-3/10 rounded flex items-center justify-center gap-1">
                                 <Clock className="h-3 w-3 text-chart-3" />
+                                <span className="text-xs text-chart-3">8:00-16:00</span>
                               </div>
-                              <div className="flex-1 h-6 bg-green-500/10 rounded flex items-center justify-center">
+                              <div className="flex-1 h-6 bg-green-500/10 rounded flex items-center justify-center gap-1">
                                 <CheckCircle className="h-3 w-3 text-green-600" />
+                                <span className="text-xs text-green-600">{language === 'en' ? 'Present' : 'حاضرة'}</span>
                               </div>
                             </div>
                           </div>
@@ -256,16 +262,22 @@ export default function TabbedFeatures() {
                                 <Users className="h-5 w-5 text-blue-600" />
                               </div>
                               <div className="flex-1">
-                                <div className="h-3 bg-muted rounded w-1/2 mb-1" />
-                                <div className="h-2 bg-muted/60 rounded w-1/4" />
+                                <div className="text-sm font-semibold text-foreground">
+                                  {language === 'en' ? 'Noura Salem' : 'نورة سالم'}
+                                </div>
+                                <div className="text-xs text-muted-foreground">
+                                  {language === 'en' ? 'Assistant' : 'مساعدة'}
+                                </div>
                               </div>
                             </div>
                             <div className="flex gap-2">
-                              <div className="flex-1 h-6 bg-blue-500/10 rounded flex items-center justify-center">
+                              <div className="flex-1 h-6 bg-blue-500/10 rounded flex items-center justify-center gap-1">
                                 <Clock className="h-3 w-3 text-blue-600" />
+                                <span className="text-xs text-blue-600">9:00-17:00</span>
                               </div>
-                              <div className="flex-1 h-6 bg-amber-500/10 rounded flex items-center justify-center">
+                              <div className="flex-1 h-6 bg-amber-500/10 rounded flex items-center justify-center gap-1">
                                 <AlertCircle className="h-3 w-3 text-amber-600" />
+                                <span className="text-xs text-amber-600">{language === 'en' ? 'Late' : 'متأخرة'}</span>
                               </div>
                             </div>
                           </div>
@@ -276,16 +288,22 @@ export default function TabbedFeatures() {
                                 <Users className="h-5 w-5 text-primary" />
                               </div>
                               <div className="flex-1">
-                                <div className="h-3 bg-muted rounded w-3/5 mb-1" />
-                                <div className="h-2 bg-muted/60 rounded w-2/5" />
+                                <div className="text-sm font-semibold text-foreground">
+                                  {language === 'en' ? 'Huda Khalid' : 'هدى خالد'}
+                                </div>
+                                <div className="text-xs text-muted-foreground">
+                                  {language === 'en' ? 'Supervisor' : 'مشرفة'}
+                                </div>
                               </div>
                             </div>
                             <div className="flex gap-2">
-                              <div className="flex-1 h-6 bg-primary/10 rounded flex items-center justify-center">
+                              <div className="flex-1 h-6 bg-primary/10 rounded flex items-center justify-center gap-1">
                                 <TrendingUp className="h-3 w-3 text-primary" />
+                                <span className="text-xs text-primary">{language === 'en' ? 'Top Rated' : 'تقييم ممتاز'}</span>
                               </div>
-                              <div className="flex-1 h-6 bg-green-500/10 rounded flex items-center justify-center">
+                              <div className="flex-1 h-6 bg-green-500/10 rounded flex items-center justify-center gap-1">
                                 <CheckCircle className="h-3 w-3 text-green-600" />
+                                <span className="text-xs text-green-600">{language === 'en' ? 'Present' : 'حاضرة'}</span>
                               </div>
                             </div>
                           </div>
