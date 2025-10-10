@@ -1,14 +1,9 @@
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Quote, Heart, Star } from 'lucide-react';
-import avatar1 from '@assets/stock_images/professional_woman_a_f65f28c8.jpg';
-import avatar2 from '@assets/stock_images/professional_man_ava_ac935556.jpg';
-import avatar3 from '@assets/stock_images/professional_woman_a_1ec00f92.jpg';
-import avatar4 from '@assets/stock_images/professional_woman_a_80b8a564.jpg';
-import avatar5 from '@assets/stock_images/professional_man_ava_263e7d82.jpg';
 
 export default function Testimonials() {
   const { language, t } = useLanguage();
@@ -22,7 +17,7 @@ export default function Testimonials() {
       nameAr: "سارة الأحمد",
       role: "Nursery Director",
       roleAr: "مديرة حضانة",
-      avatar: avatar1
+      initial: "S"
     },
     {
       quote: "As a parent, I love being able to see what my child is doing throughout the day. It gives me peace of mind.",
@@ -31,7 +26,7 @@ export default function Testimonials() {
       nameAr: "محمد العتيبي",
       role: "Parent",
       roleAr: "ولي أمر",
-      avatar: avatar2
+      initial: "M"
     },
     {
       quote: "The analytics dashboard helps us make better decisions about our nursery operations. Highly recommended!",
@@ -40,7 +35,7 @@ export default function Testimonials() {
       nameAr: "فاطمة الراشد",
       role: "Educational Supervisor",
       roleAr: "مشرفة تعليمية",
-      avatar: avatar3
+      initial: "F"
     },
     {
       quote: "MyBaby made our transition to digital management seamless. The support team is amazing!",
@@ -49,7 +44,7 @@ export default function Testimonials() {
       nameAr: "نورة الدوسري",
       role: "Nursery Owner",
       roleAr: "مالكة حضانة",
-      avatar: avatar4
+      initial: "N"
     },
     {
       quote: "The teacher dashboard is intuitive and easy to use. Our entire team adapted to it quickly.",
@@ -58,7 +53,7 @@ export default function Testimonials() {
       nameAr: "أحمد المطيري",
       role: "Head Teacher",
       roleAr: "معلم رئيسي",
-      avatar: avatar5
+      initial: "A"
     }
   ];
 
@@ -134,9 +129,8 @@ export default function Testimonials() {
                 </p>
 
                 <div className="flex items-center gap-4">
-                  <Avatar className="h-12 w-12">
-                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                    <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
+                  <Avatar className="h-12 w-12 bg-primary/20 text-primary">
+                    <AvatarFallback className="bg-primary/20 text-primary font-bold text-lg">{testimonial.initial}</AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="font-semibold text-foreground" data-testid={`text-testimonial-${idx + 1}-name`}>

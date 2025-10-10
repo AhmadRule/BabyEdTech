@@ -32,21 +32,24 @@ export default function Hero() {
         <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-chart-2/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-40 right-[20%] w-48 h-48 bg-chart-4/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
         
-        {/* Floating Letter Avatars - نورة، أحمد، فاطمة، محمد، سارة */}
-        <div className="absolute top-[12%] left-[3%] w-20 h-20 rounded-full border-4 border-primary/30 shadow-xl animate-float-diagonal bg-primary/20 flex items-center justify-center" style={{ animationDelay: '0.5s' }}>
-          <span className="text-2xl font-bold text-primary">N</span>
+        {/* Floating Circled People Photos - positioned away from center text */}
+        <div className="absolute top-[12%] left-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
+          <img src={saudiBaby} alt="Happy baby" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[15%] right-[4%] w-24 h-24 rounded-full border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse bg-chart-2/20 flex items-center justify-center" style={{ animationDelay: '1.5s' }}>
-          <span className="text-3xl font-bold text-chart-2">A</span>
+        <div className="absolute top-[15%] right-[4%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
+          <img src={saudiBoy} alt="Happy boy" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[35%] left-[2%] w-20 h-20 rounded-full border-4 border-chart-4/30 shadow-xl animate-float bg-chart-4/20 flex items-center justify-center" style={{ animationDelay: '2.5s' }}>
-          <span className="text-2xl font-bold text-chart-4">F</span>
+        <div className="absolute top-[35%] left-[2%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
+          <img src={saudiMother} alt="Happy mother" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[32%] right-[3%] w-20 h-20 rounded-full border-4 border-chart-3/30 shadow-xl animate-float-slow bg-chart-3/20 flex items-center justify-center" style={{ animationDelay: '3s' }}>
-          <span className="text-2xl font-bold text-chart-3">M</span>
+        <div className="absolute top-[32%] right-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
+          <img src={saudiFather} alt="Happy father" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[22%] left-[8%] w-20 h-20 rounded-full border-4 border-primary/30 shadow-xl animate-float-slow bg-primary/20 flex items-center justify-center" style={{ animationDelay: '3.5s' }}>
-          <span className="text-2xl font-bold text-primary">S</span>
+        <div className="absolute top-[22%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-slow" style={{ animationDelay: '3.5s' }}>
+          <img src={toddlerNursery} alt="Toddler in nursery" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-[25%] right-[10%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '4s' }}>
+          <img src={nurseryClassroom} alt="Nursery classroom" className="w-full h-full object-cover" />
         </div>
         
         {/* Small floating shapes */}
