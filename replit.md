@@ -115,7 +115,56 @@ server/
 - Admin routes protected by session middleware
 - Default credentials show warning in development
 
+## Kindergarten Onboarding Feature
+
+### Overview
+Free onboarding form allowing kindergartens to register for the MyBaby platform. Submissions are stored and can be reviewed by admins.
+
+### Access
+- Public URL: `/onboarding`
+- Accessible via "Join Free" button on Hero section
+
+### Features
+- **Bilingual Form** (English/Arabic with RTL support)
+- **Required Fields:**
+  - Kindergarten Name
+  - Contact Person Name
+  - Email Address
+  - Phone Number
+  - City
+  - Logo Upload (PNG/JPEG/SVG, max 2MB)
+- **File Upload:** Logo with live preview
+- **Form Validation:** Client-side (Zod) and server-side validation
+- **Success Confirmation:** Displays thank you message with option to submit another request
+
+### Admin Review
+- Login at `/admin/login`
+- View submissions via API: `GET /api/admin/kindergarten-onboardings`
+
+### Technical Details
+- **Backend:** `POST /api/kindergarten-onboarding` with multer file upload
+- **Storage:** In-memory (submissions persist until server restart)
+- **Schema:** `kindergartenOnboarding` table with status tracking
+- **Email Notification:** TODO - requires email service credentials (Resend/SendGrid/other)
+
+### Future Enhancements
+1. **Email Notification:** Once credentials are provided, tech team will receive email alerts for new onboarding requests
+2. **Durable Storage:** Migrate to PostgreSQL for persistence across restarts
+3. **Status Workflow:** Add approval/rejection status management
+
 ## Recent Changes
+- 2025-10-12: Added kindergarten onboarding feature:
+  - Free registration form at `/onboarding` for kindergartens to join MyBaby platform
+  - Bilingual form (English/Arabic) with RTL support
+  - File upload for kindergarten logo with live preview
+  - Form fields: kindergarten name, contact name, email, phone, city, logo
+  - Client-side and server-side validation using Zod
+  - Success confirmation page with option to submit another request
+  - Admin can view all submissions via protected API endpoint
+  - "Join Free" button added to Hero section for easy access
+  - In-memory storage (submissions persist until server restart)
+  - Email notification system ready but requires credentials (Resend/SendGrid/SMTP)
+  - Note: User dismissed Resend integration setup - email functionality can be added later with manual credentials
 - 2025-10-12: Added StakeholderValue section to landing page:
   - Central hub-and-spoke diagram showing MyBaby platform ecosystem
   - Animated central hub with multiple layered motion effects:
