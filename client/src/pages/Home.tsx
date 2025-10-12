@@ -9,24 +9,21 @@ import ClientLogos from '@/components/ClientLogos';
 import CTA from '@/components/CTA';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
-import { LanguageProvider } from '@/contexts/LanguageContext';
 
 export default function Home() {
   return (
-    <LanguageProvider>
-      <div className="min-h-screen">
-        <Navigation />
-        <Hero />
-        <SocialProof />
-        <Features />
-        <PlatformShowcase />
-        <TabbedFeatures />
-        <Testimonials />
-        <ClientLogos />
-        <CTA />
-        <ContactForm />
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <div className="min-h-screen">
+      <Navigation />
+      <Hero />
+      <SocialProof />
+      <Features />
+      <PlatformShowcase />
+      <TabbedFeatures />
+      <Testimonials />
+      <ClientLogos />
+      <CTA />
+      <ContactForm />
+      <Footer />
+    </div>
   );
 }
