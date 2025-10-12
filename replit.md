@@ -148,7 +148,7 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 - **Email Notification:** TODO - requires email service credentials (Resend/SendGrid/other)
 
 ### Future Enhancements
-1. **Email Notification:** Once credentials are provided, tech team will receive email alerts for new onboarding requests
+1. **Email Notification:** ⏰ **REMINDER: User wants to enable this later** - Once credentials are provided (Resend/SendGrid/SMTP), tech team will receive email alerts for new onboarding requests
 2. **Durable Storage:** Migrate to PostgreSQL for persistence across restarts
 3. **Status Workflow:** Add approval/rejection status management
 
