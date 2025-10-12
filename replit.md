@@ -154,8 +154,8 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 
 ## Recent Changes
 - 2025-10-12: Enhanced "Join Free" button visibility:
-  - Added unique gradient background (blue to purple gradient)
-  - Pulsing glow effect around the button
+  - Added unique gradient background (vibrant orange to golden sunset gradient)
+  - Pulsing orange glow effect around the button
   - Shimmer/shine animation that sweeps across
   - Bouncing gift icon on the left
   - Sparkling icon on the right with pulse animation
