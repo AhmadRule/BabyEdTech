@@ -7,6 +7,7 @@ import TabbedFeatures from '@/components/TabbedFeatures';
 import Testimonials from '@/components/Testimonials';
 import ClientLogos from '@/components/ClientLogos';
 import CTA from '@/components/CTA';
+import StakeholderValue from '@/components/StakeholderValue';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Testimonials />
       <ClientLogos />
       <CTA />
+      <StakeholderValue />
       <ContactForm />
       <Footer />
     </div>
