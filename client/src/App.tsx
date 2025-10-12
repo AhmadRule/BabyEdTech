@@ -7,12 +7,14 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Home from "@/pages/Home";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminLogo from "@/pages/AdminLogo";
+import KindergartenOnboarding from "@/pages/KindergartenOnboarding";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/onboarding" component={KindergartenOnboarding} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin/logo" component={AdminLogo} />
       <Route component={NotFound} />

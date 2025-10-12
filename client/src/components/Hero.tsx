@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star } from 'lucide-react';
+import { Link } from 'wouter';
 import saudiBoy from '@assets/saudi_boy.png';
 import saudiFather from '@assets/saudi_father.png';
 import saudiMother from '@assets/saudi_mother.png';
@@ -90,14 +91,16 @@ export default function Hero() {
               {t('getDemo')}
               <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              onClick={handleGetDemo}
-              data-testid="button-try-free"
-            >
-              {t('tryFree')}
-            </Button>
+            <Link href="/onboarding">
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="w-full sm:w-auto"
+                data-testid="button-join-free"
+              >
+                {t('joinFree')}
+              </Button>
+            </Link>
           </div>
 
           {/* Trust Indicators */}

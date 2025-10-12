@@ -79,3 +79,24 @@ export const insertContactSubmissionSchema = createInsertSchema(contactSubmissio
 
 export type InsertContactSubmission = z.infer<typeof insertContactSubmissionSchema>;
 export type ContactSubmission = typeof contactSubmissions.$inferSelect;
+
+export const kindergartenOnboarding = pgTable("kindergarten_onboarding", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  kindergartenName: text("kindergarten_name").notNull(),
+  contactName: text("contact_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  city: text("city").notNull(),
+  logoPath: text("logo_path").notNull(),
+  status: text("status").notNull().default("pending"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertKindergartenOnboardingSchema = createInsertSchema(kindergartenOnboarding).omit({
+  id: true,
+  status: true,
+  createdAt: true,
+});
+
+export type InsertKindergartenOnboarding = z.infer<typeof insertKindergartenOnboardingSchema>;
+export type KindergartenOnboarding = typeof kindergartenOnboarding.$inferSelect;

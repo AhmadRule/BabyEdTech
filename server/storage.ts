@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type BrandingSettings, type InsertBrandingSettings, type AdminSession, type InsertAdminSession, type ClientLogo, type InsertClientLogo, type ContactSubmission, type InsertContactSubmission } from "@shared/schema";
+import { type User, type InsertUser, type BrandingSettings, type InsertBrandingSettings, type AdminSession, type InsertAdminSession, type ClientLogo, type InsertClientLogo, type ContactSubmission, type InsertContactSubmission, type KindergartenOnboarding, type InsertKindergartenOnboarding } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 export interface IStorage {
@@ -19,6 +19,9 @@ export interface IStorage {
   
   createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission>;
   getAllContactSubmissions(): Promise<ContactSubmission[]>;
+  
+  createKindergartenOnboarding(onboarding: InsertKindergartenOnboarding): Promise<KindergartenOnboarding>;
+  getAllKindergartenOnboardings(): Promise<KindergartenOnboarding[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -27,12 +30,14 @@ export class MemStorage implements IStorage {
   private adminSessions: Map<string, AdminSession>;
   private clientLogos: Map<string, ClientLogo>;
   private contactSubmissions: Map<string, ContactSubmission>;
+  private kindergartenOnboardings: Map<string, KindergartenOnboarding>;
 
   constructor() {
     this.users = new Map();
     this.adminSessions = new Map();
     this.clientLogos = new Map();
     this.contactSubmissions = new Map();
+    this.kindergartenOnboardings = new Map();
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -136,6 +141,29 @@ export class MemStorage implements IStorage {
 
   async getAllContactSubmissions(): Promise<ContactSubmission[]> {
     return Array.from(this.contactSubmissions.values()).sort((a, b) => 
+      (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
+    );
+  }
+
+  async createKindergartenOnboarding(insertOnboarding: InsertKindergartenOnboarding): Promise<KindergartenOnboarding> {
+    const id = randomUUID();
+    const onboarding: KindergartenOnboarding = {
+      id,
+      kindergartenName: insertOnboarding.kindergartenName,
+      contactName: insertOnboarding.contactName,
+      email: insertOnboarding.email,
+      phone: insertOnboarding.phone,
+      city: insertOnboarding.city,
+      logoPath: insertOnboarding.logoPath,
+      status: "pending",
+      createdAt: new Date(),
+    };
+    this.kindergartenOnboardings.set(id, onboarding);
+    return onboarding;
+  }
+
+  async getAllKindergartenOnboardings(): Promise<KindergartenOnboarding[]> {
+    return Array.from(this.kindergartenOnboardings.values()).sort((a, b) => 
       (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
     );
   }

@@ -57,6 +57,30 @@ const uploadClientLogo = multer({
   }
 });
 
+const kindergartenLogoStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const timestamp = Date.now();
+    cb(null, `kindergarten-logo-${timestamp}${ext}`);
+  }
+});
+
+const uploadKindergartenLogo = multer({
+  storage: kindergartenLogoStorage,
+  limits: { fileSize: 2 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml'];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only PNG, JPEG, and SVG are allowed.'));
+    }
+  }
+});
+
 const loginSchema = z.object({
   username: z.string(),
   password: z.string(),
@@ -68,6 +92,14 @@ const contactSubmissionSchema = z.object({
   phone: z.string().min(1),
   nurseryName: z.string().min(1),
   message: z.string().optional(),
+});
+
+const kindergartenOnboardingSchema = z.object({
+  kindergartenName: z.string().min(1, "Kindergarten name is required"),
+  contactName: z.string().min(1, "Contact name is required"),
+  email: z.string().email("Valid email is required"),
+  phone: z.string().min(1, "Phone number is required"),
+  city: z.string().min(1, "City is required"),
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -254,6 +286,60 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(submissions);
     } catch (error: any) {
       res.status(500).json({ error: error.message || 'Failed to fetch contact submissions' });
+    }
+  });
+
+  app.post('/api/kindergarten-onboarding', (req, res) => {
+    uploadKindergartenLogo.single('logo')(req, res, async (err) => {
+      if (err) {
+        if (err instanceof multer.MulterError) {
+          if (err.code === 'LIMIT_FILE_SIZE') {
+            return res.status(400).json({ error: 'File size exceeds 2MB limit' });
+          }
+        }
+        return res.status(400).json({ error: err.message || 'Upload failed' });
+      }
+
+      try {
+        if (!req.file) {
+          return res.status(400).json({ error: 'Logo is required' });
+        }
+
+        const validatedData = kindergartenOnboardingSchema.parse(req.body);
+        const logoPath = `/uploads/${req.file.filename}`;
+
+        const onboarding = await storage.createKindergartenOnboarding({
+          kindergartenName: validatedData.kindergartenName,
+          contactName: validatedData.contactName,
+          email: validatedData.email,
+          phone: validatedData.phone,
+          city: validatedData.city,
+          logoPath,
+        });
+
+        // TODO: Send email notification when credentials are configured
+        // Email should include: kindergarten name, contact info, and logo URL
+        
+        res.json({ 
+          success: true, 
+          message: 'Onboarding request submitted successfully',
+          onboarding
+        });
+      } catch (error: any) {
+        if (error instanceof z.ZodError) {
+          return res.status(400).json({ error: 'Invalid form data', details: error.errors });
+        }
+        res.status(400).json({ error: error.message || 'Failed to submit onboarding request' });
+      }
+    });
+  });
+
+  app.get('/api/admin/kindergarten-onboardings', requireAdmin, async (req, res) => {
+    try {
+      const onboardings = await storage.getAllKindergartenOnboardings();
+      res.json(onboardings);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message || 'Failed to fetch onboarding requests' });
     }
   });
 
