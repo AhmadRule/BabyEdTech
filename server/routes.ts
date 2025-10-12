@@ -20,8 +20,32 @@ const multerStorage = multer.diskStorage({
   }
 });
 
+const clientLogoStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const timestamp = Date.now();
+    cb(null, `client-logo-${timestamp}${ext}`);
+  }
+});
+
 const upload = multer({
   storage: multerStorage,
+  limits: { fileSize: 2 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml'];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only PNG, JPEG, and SVG are allowed.'));
+    }
+  }
+});
+
+const uploadClientLogo = multer({
+  storage: clientLogoStorage,
   limits: { fileSize: 2 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml'];
@@ -36,6 +60,14 @@ const upload = multer({
 const loginSchema = z.object({
   username: z.string(),
   password: z.string(),
+});
+
+const contactSubmissionSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string().min(1),
+  nurseryName: z.string().min(1),
+  message: z.string().optional(),
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -129,6 +161,99 @@ export async function registerRoutes(app: Express): Promise<Server> {
         hasCustomLogo: false,
         logoUrl: null,
       });
+    }
+  });
+
+  app.post('/api/admin/client-logos', requireAdmin, (req, res) => {
+    uploadClientLogo.single('logo')(req, res, async (err) => {
+      if (err) {
+        if (err instanceof multer.MulterError) {
+          if (err.code === 'LIMIT_FILE_SIZE') {
+            return res.status(400).json({ error: 'File size exceeds 2MB limit' });
+          }
+          return res.status(400).json({ error: `Upload error: ${err.message}` });
+        }
+        return res.status(400).json({ error: err.message || 'Upload failed' });
+      }
+
+      try {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No file uploaded' });
+        }
+
+        const { name, displayOrder } = req.body;
+
+        if (!name) {
+          return res.status(400).json({ error: 'Client name is required' });
+        }
+
+        const logoPath = `/uploads/${req.file.filename}`;
+        
+        const clientLogo = await storage.createClientLogo({
+          name,
+          logoPath,
+          displayOrder: displayOrder || null,
+        });
+
+        res.json({ 
+          success: true, 
+          clientLogo
+        });
+      } catch (error: any) {
+        res.status(400).json({ error: error.message || 'Upload failed' });
+      }
+    });
+  });
+
+  app.get('/api/client-logos', async (req, res) => {
+    try {
+      const logos = await storage.getAllClientLogos();
+      res.json(logos);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message || 'Failed to fetch client logos' });
+    }
+  });
+
+  app.delete('/api/admin/client-logos/:id', requireAdmin, async (req, res) => {
+    try {
+      const { id } = req.params;
+      await storage.deleteClientLogo(id);
+      res.json({ success: true });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message || 'Failed to delete client logo' });
+    }
+  });
+
+  app.post('/api/contact', async (req, res) => {
+    try {
+      const data = contactSubmissionSchema.parse(req.body);
+      
+      const submission = await storage.createContactSubmission({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        nurseryName: data.nurseryName,
+        message: data.message,
+      });
+
+      res.json({ 
+        success: true, 
+        submission
+      });
+    } catch (error: any) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: 'Invalid form data', details: error.errors });
+      }
+      res.status(400).json({ error: error.message || 'Failed to submit contact form' });
+    }
+  });
+
+  app.get('/api/admin/contact-submissions', requireAdmin, async (req, res) => {
+    try {
+      const submissions = await storage.getAllContactSubmissions();
+      res.json(submissions);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message || 'Failed to fetch contact submissions' });
     }
   });
 

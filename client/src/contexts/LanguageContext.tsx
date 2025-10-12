@@ -48,7 +48,17 @@ const translations = {
     footerPricing: 'Pricing',
     footerContact: 'Contact',
     footerCopyright: '© 2025 MyBaby | Made with 💙 in Saudi Arabia',
-    madeInSaudi: 'Made with 💙 in Saudi Arabia'
+    madeInSaudi: 'Made with 💙 in Saudi Arabia',
+    contactTitle: 'Request a Demo',
+    contactSubtitle: 'Fill out the form below and our team will get back to you within 24 hours',
+    contactName: 'Your Name',
+    contactEmail: 'Email Address',
+    contactPhone: 'Phone Number',
+    contactNursery: 'Nursery Name',
+    contactMessage: 'Message (Optional)',
+    contactSubmit: 'Submit Request',
+    contactSuccess: 'Thank you! We\'ll contact you soon.',
+    contactError: 'Something went wrong. Please try again.'
   },
   ar: {
     home: 'الرئيسية',
@@ -88,7 +98,17 @@ const translations = {
     footerPricing: 'الأسعار',
     footerContact: 'اتصل بنا',
     footerCopyright: '© 2025 MyBaby | صنع بـ 💙 في السعودية',
-    madeInSaudi: 'صنع بـ 💙 في السعودية'
+    madeInSaudi: 'صنع بـ 💙 في السعودية',
+    contactTitle: 'اطلب عرض توضيحي',
+    contactSubtitle: 'املأ النموذج أدناه وسيتواصل معك فريقنا خلال 24 ساعة',
+    contactName: 'الاسم',
+    contactEmail: 'البريد الإلكتروني',
+    contactPhone: 'رقم الجوال',
+    contactNursery: 'اسم الحضانة',
+    contactMessage: 'رسالة (اختياري)',
+    contactSubmit: 'إرسال الطلب',
+    contactSuccess: 'شكراً لك! سنتواصل معك قريباً.',
+    contactError: 'حدث خطأ ما. يرجى المحاولة مرة أخرى.'
   }
 };
 

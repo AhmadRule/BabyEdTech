@@ -45,3 +45,37 @@ export const insertAdminSessionSchema = createInsertSchema(adminSessions).omit({
 
 export type InsertAdminSession = z.infer<typeof insertAdminSessionSchema>;
 export type AdminSession = typeof adminSessions.$inferSelect;
+
+export const clientLogos = pgTable("client_logos", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  logoPath: text("logo_path").notNull(),
+  displayOrder: text("display_order"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertClientLogoSchema = createInsertSchema(clientLogos).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertClientLogo = z.infer<typeof insertClientLogoSchema>;
+export type ClientLogo = typeof clientLogos.$inferSelect;
+
+export const contactSubmissions = pgTable("contact_submissions", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  nurseryName: text("nursery_name").notNull(),
+  message: text("message"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertContactSubmissionSchema = createInsertSchema(contactSubmissions).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertContactSubmission = z.infer<typeof insertContactSubmissionSchema>;
+export type ContactSubmission = typeof contactSubmissions.$inferSelect;

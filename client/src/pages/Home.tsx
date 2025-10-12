@@ -5,7 +5,9 @@ import Features from '@/components/Features';
 import PlatformShowcase from '@/components/PlatformShowcase';
 import TabbedFeatures from '@/components/TabbedFeatures';
 import Testimonials from '@/components/Testimonials';
+import ClientLogos from '@/components/ClientLogos';
 import CTA from '@/components/CTA';
+import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 
@@ -20,7 +22,9 @@ export default function Home() {
         <PlatformShowcase />
         <TabbedFeatures />
         <Testimonials />
+        <ClientLogos />
         <CTA />
+        <ContactForm />
         <Footer />
       </div>
     </LanguageProvider>
