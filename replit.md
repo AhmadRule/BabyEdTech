@@ -121,7 +121,7 @@ server/
   - Animated central hub with multiple layered motion effects:
     - Pinging glow ring expanding outward (3s cycle)
     - Rotating dashed border ring
-    - Gentle floating animation on main circle
+    - Smooth circular clockwise floating animation on main circle (8s cycle)
     - Pulsing inner glow (2s cycle)
   - 4 stakeholder cards: Parents, Teachers, Administrators, Better Care
   - Each card displays 4 key benefits with checkmark icons

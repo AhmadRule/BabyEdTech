@@ -90,7 +90,7 @@ export default function StakeholderValue() {
             
             {/* Main Hub Circle */}
             <div 
-              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#00ADEF] to-[#89AEFF] flex items-center justify-center shadow-2xl animate-float-slow"
+              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#00ADEF] to-[#89AEFF] flex items-center justify-center shadow-2xl animate-float-circular"
               data-testid="stakeholder-hub"
             >
               {/* Inner Glow */}
