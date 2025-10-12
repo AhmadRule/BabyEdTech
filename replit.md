@@ -7,8 +7,11 @@ A fully responsive bilingual (Arabic/English) landing page for MyBaby, an EdTech
 - Bilingual support (English/Arabic) with RTL layout switching
 - Responsive design optimized for all devices
 - Admin panel for logo customization via file upload
+- Client logos management system
+- Contact/demo request form with admin viewing
+- Stakeholder value diagram showing platform ecosystem
 - MyBaby brand color palette
-- Modern components: Hero, Features, Testimonials, Social Proof, CTA, Footer
+- Modern components: Hero, Features, Testimonials, Social Proof, CTA, StakeholderValue, Footer
 
 ## Technology Stack
 - Frontend: React + TypeScript + Wouter + TanStack Query
@@ -90,6 +93,9 @@ client/src/
 │   ├── Features.tsx      # Features with tabs
 │   ├── Testimonials.tsx  # Customer testimonials
 │   ├── SocialProof.tsx   # Statistics and social proof
+│   ├── ClientLogos.tsx   # Client logos display
+│   ├── StakeholderValue.tsx # Stakeholder ecosystem diagram
+│   ├── ContactForm.tsx   # Demo request form
 │   └── Footer.tsx        # Footer
 └── contexts/
     └── LanguageContext.tsx # Bilingual support
@@ -110,6 +116,15 @@ server/
 - Default credentials show warning in development
 
 ## Recent Changes
+- 2025-10-12: Added StakeholderValue section to landing page:
+  - Central hub-and-spoke diagram showing MyBaby platform ecosystem
+  - 4 stakeholder cards: Parents, Teachers, Administrators, Better Care
+  - Each card displays 4 key benefits with checkmark icons
+  - RTL-aware SVG connecting lines that adjust based on language
+  - Full bilingual support with Arabic translations
+  - Positioned before Contact Form to reinforce value proposition
+  - Gradient backgrounds matching MyBaby brand colors
+  - Responsive layout with mobile-first design
 - 2025-10-09: Added smooth moving graphics throughout the landing page:
   - Custom CSS animations: float, float-slow, float-diagonal, slide-horizontal, rotate-slow, scale-pulse
   - Hero section: Large floating circles, small shapes (Circle, Square, Triangle), sliding dots, rotating borders
