@@ -118,6 +118,11 @@ server/
 ## Recent Changes
 - 2025-10-12: Added StakeholderValue section to landing page:
   - Central hub-and-spoke diagram showing MyBaby platform ecosystem
+  - Animated central hub with multiple layered motion effects:
+    - Pinging glow ring expanding outward (3s cycle)
+    - Rotating dashed border ring
+    - Gentle floating animation on main circle
+    - Pulsing inner glow (2s cycle)
   - 4 stakeholder cards: Parents, Teachers, Administrators, Better Care
   - Each card displays 4 key benefits with checkmark icons
   - RTL-aware SVG connecting lines that adjust based on language

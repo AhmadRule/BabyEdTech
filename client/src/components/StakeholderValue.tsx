@@ -82,11 +82,21 @@ export default function StakeholderValue() {
         <div className="relative max-w-6xl mx-auto">
           {/* Central Hub */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+            {/* Animated Glow Ring */}
+            <div className="absolute inset-0 -m-4 rounded-full bg-gradient-to-br from-[#00ADEF]/30 to-[#89AEFF]/30 animate-ping" style={{ animationDuration: '3s' }}></div>
+            
+            {/* Rotating Border Ring */}
+            <div className="absolute inset-0 -m-2 rounded-full border-2 border-dashed border-[#00ADEF]/40 animate-rotate-slow"></div>
+            
+            {/* Main Hub Circle */}
             <div 
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#00ADEF] to-[#89AEFF] flex items-center justify-center shadow-2xl"
+              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#00ADEF] to-[#89AEFF] flex items-center justify-center shadow-2xl animate-float-slow"
               data-testid="stakeholder-hub"
             >
-              <div className="text-center">
+              {/* Inner Glow */}
+              <div className="absolute inset-2 rounded-full bg-white/10 animate-pulse" style={{ animationDuration: '2s' }}></div>
+              
+              <div className="text-center relative z-10">
                 <div className="text-white text-2xl md:text-3xl font-bold">MyBaby</div>
                 <div className="text-white/80 text-xs md:text-sm">{t('stakeholderPlatform')}</div>
               </div>
