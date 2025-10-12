@@ -153,6 +153,14 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 3. **Status Workflow:** Add approval/rejection status management
 
 ## Recent Changes
+- 2025-10-12: Enhanced "Join Free" button visibility:
+  - Added unique gradient background (blue to purple gradient)
+  - Pulsing glow effect around the button
+  - Shimmer/shine animation that sweeps across
+  - Bouncing gift icon on the left
+  - Sparkling icon on the right with pulse animation
+  - Larger, more prominent design to attract attention
+  - Smooth hover effects with enhanced glow
 - 2025-10-12: Added kindergarten onboarding feature:
   - Free registration form at `/onboarding` for kindergartens to join MyBaby platform
   - Bilingual form (English/Arabic) with RTL support

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star } from 'lucide-react';
+import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star, Gift } from 'lucide-react';
 import { Link } from 'wouter';
 import saudiBoy from '@assets/saudi_boy.png';
 import saudiFather from '@assets/saudi_father.png';
@@ -81,7 +81,7 @@ export default function Hero() {
             {t('heroSubtext')}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
               className="gap-2"
@@ -91,14 +91,17 @@ export default function Hero() {
               {t('getDemo')}
               <ArrowRight className="h-4 w-4" />
             </Button>
-            <Link href="/onboarding">
+            <Link href="/onboarding" className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#00ADEF] via-[#89AEFF] to-[#00ADEF] rounded-lg opacity-75 blur-lg animate-glow-pulse group-hover:opacity-100 transition duration-300"></div>
               <Button 
                 size="lg" 
-                variant="outline"
-                className="w-full sm:w-auto"
+                className="relative w-full sm:w-auto gap-2 bg-gradient-to-r from-[#00ADEF] to-[#89AEFF] hover:from-[#0183F1] hover:to-[#00ADEF] text-white font-semibold shadow-xl overflow-hidden"
                 data-testid="button-join-free"
               >
-                {t('joinFree')}
+                <div className="absolute inset-0 bg-white/30 w-1/4 skew-x-12 animate-shimmer"></div>
+                <Gift className="h-5 w-5 animate-bounce-subtle" />
+                <span className="relative z-10">{t('joinFree')}</span>
+                <Sparkles className="h-4 w-4 animate-pulse" />
               </Button>
             </Link>
           </div>
