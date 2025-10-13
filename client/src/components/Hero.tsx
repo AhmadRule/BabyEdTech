@@ -22,8 +22,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative pt-20">
-      <BeamsBackground intensity="medium" className="min-h-screen flex items-center justify-center">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-4/5 to-chart-3/5 -z-10" />
       
       {/* Decorative mesh gradient overlay */}
@@ -168,7 +167,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      </BeamsBackground>
     </section>
   );
 }
