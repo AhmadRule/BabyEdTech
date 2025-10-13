@@ -153,6 +153,13 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 3. **Status Workflow:** Add approval/rejection status management
 
 ## Recent Changes
+- 2025-10-13: Added BeamsBackground animated effect to Hero section:
+  - Integrated BeamsBackground component with animated light beams
+  - Features canvas-based animation with pulsing gradient beams
+  - Beams move diagonally across the screen with varying speeds and colors
+  - Multi-layered blur and backdrop filter for depth
+  - Customizable intensity (set to "medium" for Hero section)
+  - Creates dynamic, premium animated background effect
 - 2025-10-13: Applied Liquid Glass Button effect to "Join Free" button:
   - Integrated custom LiquidButton component with advanced glass morphism effect
   - Features liquid-like distortion using SVG filters (feTurbulence, feDisplacementMap)

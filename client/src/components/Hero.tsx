@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Building2, Star, Gift } from 'lucide-react';
 import { Link } from 'wouter';
 import { LiquidButton } from '@/components/ui/liquid-glass-button';
+import { BeamsBackground } from '@/components/ui/beams-background';
 import saudiBoy from '@assets/saudi_boy.png';
 import saudiFather from '@assets/saudi_father.png';
 import saudiMother from '@assets/saudi_mother.png';
@@ -21,7 +22,8 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="home" className="relative pt-20">
+      <BeamsBackground intensity="medium" className="min-h-screen flex items-center justify-center">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-4/5 to-chart-3/5 -z-10" />
       
       {/* Decorative mesh gradient overlay */}
@@ -166,6 +168,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      </BeamsBackground>
     </section>
   );
 }
