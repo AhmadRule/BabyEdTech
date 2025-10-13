@@ -94,16 +94,17 @@ export default function Hero() {
               <ArrowRight className="h-4 w-4" />
             </Button>
             <Link href="/onboarding" className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#FF6B35] via-[#F7931E] to-[#FF6B35] rounded-lg opacity-75 blur-lg animate-glow-pulse group-hover:opacity-100 transition duration-300"></div>
-              <LiquidButton 
-                size="xl" 
-                className="relative w-full sm:w-auto gap-3 bg-gradient-to-r from-[#FF6B35] to-[#F7931E] text-white font-bold shadow-xl"
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#FF6B35] via-[#F7931E] to-[#FF6B35] rounded-lg opacity-75 blur-lg animate-glow-pulse group-hover:opacity-100 transition duration-300"></div>
+              <Button 
+                size="lg" 
+                className="relative w-full sm:w-auto gap-2 bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#FF8C42] hover:to-[#FFAB00] text-white font-semibold shadow-xl overflow-hidden"
                 data-testid="button-join-free"
               >
+                <div className="absolute inset-0 bg-white/30 w-1/4 skew-x-12 animate-shimmer"></div>
                 <Gift className="h-5 w-5 animate-bounce-subtle" />
                 <span className="relative z-10">{t('joinFree')}</span>
-                <Sparkles className="h-5 w-5 animate-pulse" />
-              </LiquidButton>
+                <Sparkles className="h-4 w-4 animate-pulse" />
+              </Button>
             </Link>
           </div>
 
