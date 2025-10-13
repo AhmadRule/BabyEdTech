@@ -23,75 +23,70 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Solid blue background */}
-      <div className="absolute inset-0 bg-[#0183F1] -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-4/5 to-chart-3/5 -z-10" />
       
-      {/* Diagonal white transition at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-background -z-[9]" 
-           style={{ 
-             clipPath: 'polygon(0 50%, 100% 0, 100% 100%, 0 100%)'
-           }} 
-      />
+      {/* Decorative mesh gradient overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,173,239,0.15),transparent_50%),radial-gradient(circle_at_70%_60%,rgba(137,174,255,0.15),transparent_50%)] -z-10" />
       
       {/* Smooth Moving Graphics */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Large floating circles */}
-        <div className="absolute top-20 left-[10%] w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-white/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-40 right-[20%] w-48 h-48 bg-white/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-20 left-[10%] w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-20 right-[15%] w-80 h-80 bg-chart-2/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-40 right-[20%] w-48 h-48 bg-chart-4/10 rounded-full blur-2xl animate-float-diagonal" style={{ animationDelay: '1s' }} />
         
         {/* Floating Circled People Photos - positioned away from center text */}
-        <div className="absolute top-[12%] left-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
+        <div className="absolute top-[12%] left-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '0.5s' }}>
           <img src={saudiBaby} alt="Happy baby" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[15%] right-[4%] w-24 h-24 rounded-full overflow-hidden border-4 border-white/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
+        <div className="absolute top-[15%] right-[4%] w-24 h-24 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal-reverse" style={{ animationDelay: '1.5s' }}>
           <img src={saudiBoy} alt="Happy boy" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[35%] left-[2%] w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
+        <div className="absolute top-[35%] left-[2%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-4/30 shadow-xl animate-float" style={{ animationDelay: '2.5s' }}>
           <img src={saudiMother} alt="Happy mother" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[32%] right-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
+        <div className="absolute top-[32%] right-[3%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-3/30 shadow-xl animate-float-slow" style={{ animationDelay: '3s' }}>
           <img src={saudiFather} alt="Happy father" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[22%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 shadow-xl animate-float-slow" style={{ animationDelay: '3.5s' }}>
+        <div className="absolute top-[22%] left-[8%] w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-float-slow" style={{ animationDelay: '3.5s' }}>
           <img src={toddlerNursery} alt="Toddler in nursery" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[25%] right-[10%] w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '4s' }}>
+        <div className="absolute top-[25%] right-[10%] w-20 h-20 rounded-full overflow-hidden border-4 border-chart-2/30 shadow-xl animate-float-diagonal" style={{ animationDelay: '4s' }}>
           <img src={nurseryClassroom} alt="Nursery classroom" className="w-full h-full object-cover" />
         </div>
         
         {/* Small floating shapes */}
-        <Square className="absolute top-[40%] right-[15%] w-10 h-10 text-white/15 animate-float-diagonal-reverse" style={{ animationDelay: '4s' }} />
-        <Triangle className="absolute bottom-[45%] left-[18%] w-14 h-14 text-white/15 animate-float" style={{ animationDelay: '5s' }} />
+        <Square className="absolute top-[40%] right-[15%] w-10 h-10 text-chart-2/15 animate-float-diagonal-reverse" style={{ animationDelay: '4s' }} />
+        <Triangle className="absolute bottom-[45%] left-[18%] w-14 h-14 text-chart-4/15 animate-float" style={{ animationDelay: '5s' }} />
         
         {/* Sliding dots */}
-        <div className="absolute top-[35%] left-0 w-3 h-3 bg-white/30 rounded-full animate-slide-horizontal" />
-        <div className="absolute top-[45%] right-0 w-3 h-3 bg-white/30 rounded-full animate-slide-horizontal-reverse" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-[35%] left-[5%] w-2.5 h-2.5 bg-white/30 rounded-full animate-slide-horizontal" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[35%] left-0 w-3 h-3 bg-primary/30 rounded-full animate-slide-horizontal" />
+        <div className="absolute top-[45%] right-0 w-3 h-3 bg-chart-2/30 rounded-full animate-slide-horizontal-reverse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-[35%] left-[5%] w-2.5 h-2.5 bg-chart-4/30 rounded-full animate-slide-horizontal" style={{ animationDelay: '2s' }} />
         
         {/* Rotating shapes */}
-        <div className="absolute top-[60%] right-[25%] w-20 h-20 border-2 border-white/20 rounded-lg animate-rotate-slow" />
-        <div className="absolute bottom-[40%] left-[20%] w-16 h-16 border-2 border-white/20 animate-rotate-slow" style={{ animationDelay: '5s' }} />
+        <div className="absolute top-[60%] right-[25%] w-20 h-20 border-2 border-primary/20 rounded-lg animate-rotate-slow" />
+        <div className="absolute bottom-[40%] left-[20%] w-16 h-16 border-2 border-chart-2/20 animate-rotate-slow" style={{ animationDelay: '5s' }} />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative z-10">
         <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
             {t('heroTitle1')}
           </h1>
 
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white rounded-full backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary rounded-full backdrop-blur-sm">
             <span className="text-lg md:text-xl font-medium">{t('heroTagline')}</span>
           </div>
 
-          <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto" data-testid="text-hero-subtext">
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtext">
             {t('heroSubtext')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="gap-2 bg-white text-[#0183F1] hover:bg-white/90"
+              className="gap-2"
               onClick={handleGetDemo}
               data-testid="button-get-demo"
             >
@@ -115,41 +110,41 @@ export default function Hero() {
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto mt-12">
             {/* Nurseries stat */}
-            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover-elevate transition-all">
-              <div className="absolute -top-3 -right-3 w-16 h-16 bg-white/10 rounded-full blur-xl group-hover:bg-white/20 transition-colors" />
-              <Building2 className="h-8 w-8 text-white mb-3" />
-              <div className="text-3xl font-bold text-white mb-1" data-testid="stat-nurseries">
+            <div className="group relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover-elevate transition-all">
+              <div className="absolute -top-3 -right-3 w-16 h-16 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-colors" />
+              <Building2 className="h-8 w-8 text-primary mb-3" />
+              <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-nurseries">
                 {formatNumber('500+')}
               </div>
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-muted-foreground">
                 {t('nurseries')}
               </div>
             </div>
 
             {/* Parents stat */}
-            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover-elevate transition-all">
-              <div className="absolute -top-3 -right-3 w-16 h-16 bg-white/10 rounded-full blur-xl group-hover:bg-white/20 transition-colors" />
-              <Users className="h-8 w-8 text-white mb-3" />
-              <div className="text-3xl font-bold text-white mb-1" data-testid="stat-parents">
+            <div className="group relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover-elevate transition-all">
+              <div className="absolute -top-3 -right-3 w-16 h-16 bg-chart-2/10 rounded-full blur-xl group-hover:bg-chart-2/20 transition-colors" />
+              <Users className="h-8 w-8 text-chart-2 mb-3" />
+              <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-parents">
                 {formatNumber('10,000+')}
               </div>
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-muted-foreground">
                 {t('happyParents')}
               </div>
             </div>
 
             {/* Rating stat */}
-            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover-elevate transition-all">
-              <div className="absolute -top-3 -right-3 w-16 h-16 bg-white/10 rounded-full blur-xl group-hover:bg-white/20 transition-colors" />
+            <div className="group relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover-elevate transition-all">
+              <div className="absolute -top-3 -right-3 w-16 h-16 bg-chart-4/10 rounded-full blur-xl group-hover:bg-chart-4/20 transition-colors" />
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                  <Star key={i} className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                 ))}
               </div>
-              <div className="text-3xl font-bold text-white mb-1" data-testid="stat-rating">
+              <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-rating">
                 {formatNumber('4.9')}
               </div>
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-muted-foreground">
                 {t('appStoreRating')}
               </div>
             </div>
@@ -157,16 +152,16 @@ export default function Hero() {
 
           {/* Key Benefits */}
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-8 max-w-3xl mx-auto">
-            <div className="flex items-center gap-2 text-sm text-white/90">
-              <CheckCircle className="h-5 w-5 text-white" />
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-5 w-5 text-primary" />
               <span>{t('noCreditCard')}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-white/90">
-              <CheckCircle className="h-5 w-5 text-white" />
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-5 w-5 text-primary" />
               <span>{t('freeTrial')}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-white/90">
-              <CheckCircle className="h-5 w-5 text-white" />
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-5 w-5 text-primary" />
               <span>{t('support247')}</span>
             </div>
           </div>
