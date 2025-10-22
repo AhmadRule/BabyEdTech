@@ -1,6 +1,7 @@
 import { type User, type InsertUser, type BrandingSettings, type InsertBrandingSettings, type AdminSession, type InsertAdminSession, type ClientLogo, type InsertClientLogo, type ContactSubmission, type InsertContactSubmission, type KindergartenOnboarding, type InsertKindergartenOnboarding, users, brandingSettings, adminSessions, clientLogos, contactSubmissions, kindergartenOnboarding } from "@shared/schema";
 import { randomUUID } from "crypto";
-import { drizzle } from "drizzle-orm/neon-serverless";
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
 import { eq } from "drizzle-orm";
 
 export interface IStorage {
@@ -175,7 +176,8 @@ export class DbStorage implements IStorage {
   private db;
 
   constructor() {
-    this.db = drizzle(process.env.DATABASE_URL!);
+    const sql = neon(process.env.DATABASE_URL!);
+    this.db = drizzle(sql);
   }
 
   async getUser(id: string): Promise<User | undefined> {
