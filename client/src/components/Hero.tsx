@@ -4,6 +4,7 @@ import { Sparkles, ArrowRight, Circle, Square, Triangle, CheckCircle, Users, Bui
 import { Link } from 'wouter';
 import { LiquidButton } from '@/components/ui/liquid-glass-button';
 import { BeamsBackground } from '@/components/ui/beams-background';
+import BabyBirdCharacter from '@/components/BabyBirdCharacter';
 import saudiBoy from '@assets/saudi_boy.png';
 import saudiFather from '@assets/saudi_father.png';
 import saudiMother from '@assets/saudi_mother.png';
@@ -71,6 +72,11 @@ export default function Hero() {
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative z-10">
         <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto">
+          {/* Baby Bird Character */}
+          <div className="flex justify-center mb-4">
+            <BabyBirdCharacter emotion="waving" size="lg" />
+          </div>
+          
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
             {language === 'en' ? (
               <>

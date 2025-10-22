@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
+import BabyBirdCharacter from '@/components/BabyBirdCharacter';
 
 interface Message {
   id: string;
@@ -105,8 +106,10 @@ export default function AIChatbot() {
         <Card className="fixed bottom-6 left-6 z-50 w-96 h-[600px] shadow-2xl flex flex-col border-2">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-primary to-[#F7931E] text-white rounded-t-lg">
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-5 w-5" />
+            <div className="flex items-center gap-3">
+              <div className="bg-white rounded-full p-1">
+                <BabyBirdCharacter emotion="happy" size="sm" />
+              </div>
               <div>
                 <h3 className="font-bold">
                   {language === 'en' ? 'MyBaby AI Assistant' : 'مساعد MyBaby الذكي'}
@@ -130,7 +133,9 @@ export default function AIChatbot() {
           <ScrollArea className="flex-1 p-4" ref={scrollRef}>
             {messages.length === 0 && (
               <div className="text-center text-muted-foreground py-8">
-                <Sparkles className="h-12 w-12 mx-auto mb-4 text-primary" />
+                <div className="flex justify-center mb-4">
+                  <BabyBirdCharacter emotion="waving" size="lg" />
+                </div>
                 <p className="text-sm">
                   {language === 'en' 
                     ? 'Hi! I can help you learn about MyBaby products and services.' 
