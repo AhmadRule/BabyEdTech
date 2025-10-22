@@ -31,7 +31,7 @@ export default function Logo({ className = "" }: LogoProps) {
 
   return (
     <div className={`flex flex-col ${className}`}>
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-1.5" dir="ltr">
         <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
           my
         </span>
