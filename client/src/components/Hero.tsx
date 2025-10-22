@@ -56,6 +56,139 @@ export default function Hero() {
           <img src={nurseryClassroom} alt="Nursery classroom" className="w-full h-full object-cover" />
         </div>
 
+        {/* Animated Mobile Phone Mockup - Left Side */}
+        <div className="hidden lg:block absolute top-[25%] left-[5%] animate-float-slow" style={{ animationDelay: '1s' }}>
+          <div className="relative w-64 h-[500px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] shadow-2xl border-8 border-gray-900 overflow-hidden">
+            {/* Phone notch */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-10" />
+            
+            {/* Screen content */}
+            <div className="h-full bg-white p-4 pt-8">
+              {/* Header with MyBaby logo */}
+              <div className="flex items-center justify-between mb-6 animate-[slide-up_0.5s_ease-out]">
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">my</span>
+                  </div>
+                  <span className="font-bold text-xl text-primary">BABY</span>
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {language === 'en' ? 'Today' : 'اليوم'}
+                </div>
+              </div>
+
+              {/* Attendance title */}
+              <h3 className="font-bold text-lg mb-4 text-foreground animate-[slide-up_0.5s_ease-out_0.2s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 0.2s forwards' }}>
+                {language === 'en' ? 'Mark Attendance' : 'تسجيل الحضور'}
+              </h3>
+
+              {/* Student list */}
+              <div className="space-y-3">
+                {/* Student 1 - محمد العتيبي */}
+                <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-xl animate-[slide-up_0.5s_ease-out_0.5s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 0.5s forwards' }}>
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                    م
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">محمد العتيبي</div>
+                    <div className="text-xs text-muted-foreground">8:15 {language === 'en' ? 'AM' : 'ص'}</div>
+                  </div>
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center animate-[scale-pulse_0.3s_ease-out_1.5s]">
+                    <CheckCircle className="h-4 w-4 text-white" />
+                  </div>
+                </div>
+
+                {/* Student 2 - يزن عبدالله */}
+                <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-xl animate-[slide-up_0.5s_ease-out_1s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 1s forwards' }}>
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                    ي
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">يزن عبدالله</div>
+                    <div className="text-xs text-muted-foreground">8:22 {language === 'en' ? 'AM' : 'ص'}</div>
+                  </div>
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center animate-[scale-pulse_0.3s_ease-out_2s]">
+                    <CheckCircle className="h-4 w-4 text-white" />
+                  </div>
+                </div>
+
+                {/* Student 3 - سارة خالد */}
+                <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-xl animate-[slide-up_0.5s_ease-out_1.5s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 1.5s forwards' }}>
+                  <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white font-bold">
+                    س
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">سارة خالد</div>
+                    <div className="text-xs text-muted-foreground">8:30 {language === 'en' ? 'AM' : 'ص'}</div>
+                  </div>
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center animate-[scale-pulse_0.3s_ease-out_2.5s]">
+                    <CheckCircle className="h-4 w-4 text-white" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats footer */}
+              <div className="absolute bottom-8 left-4 right-4 bg-gradient-to-r from-primary/10 to-chart-2/10 rounded-xl p-4 animate-[slide-up_0.5s_ease-out_3s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 3s forwards' }}>
+                <div className="flex justify-around text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-primary">3</div>
+                    <div className="text-xs text-muted-foreground">{language === 'en' ? 'Present' : 'حاضر'}</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-muted-foreground">0</div>
+                    <div className="text-xs text-muted-foreground">{language === 'en' ? 'Absent' : 'غائب'}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Animated Dashboard Preview - Right Side */}
+        <div className="hidden lg:block absolute top-[20%] right-[5%] animate-float-diagonal-reverse" style={{ animationDelay: '2s' }}>
+          <div className="w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+            {/* Dashboard header */}
+            <div className="bg-gradient-to-r from-primary to-primary/80 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                  <Building2 className="h-5 w-5 text-white" />
+                </div>
+                <span className="text-white font-bold">MyBaby Dashboard</span>
+              </div>
+            </div>
+
+            {/* Stats grid */}
+            <div className="p-4 grid grid-cols-2 gap-3">
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-3 rounded-lg animate-[slide-up_0.5s_ease-out_0.5s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 0.5s forwards' }}>
+                <div className="text-2xl font-bold text-primary">24</div>
+                <div className="text-xs text-muted-foreground">{language === 'en' ? 'Students' : 'طالب'}</div>
+              </div>
+              <div className="bg-gradient-to-br from-green-500/10 to-green-500/5 p-3 rounded-lg animate-[slide-up_0.5s_ease-out_1s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 1s forwards' }}>
+                <div className="text-2xl font-bold text-green-600">21</div>
+                <div className="text-xs text-muted-foreground">{language === 'en' ? 'Present' : 'حاضر'}</div>
+              </div>
+              <div className="bg-gradient-to-br from-chart-2/10 to-chart-2/5 p-3 rounded-lg animate-[slide-up_0.5s_ease-out_1.5s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 1.5s forwards' }}>
+                <div className="text-2xl font-bold text-chart-2">8</div>
+                <div className="text-xs text-muted-foreground">{language === 'en' ? 'Activities' : 'أنشطة'}</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-500/10 to-purple-500/5 p-3 rounded-lg animate-[slide-up_0.5s_ease-out_2s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 2s forwards' }}>
+                <div className="text-2xl font-bold text-purple-600">12</div>
+                <div className="text-xs text-muted-foreground">{language === 'en' ? 'Reports' : 'تقارير'}</div>
+              </div>
+            </div>
+
+            {/* Recent activity */}
+            <div className="px-4 pb-4">
+              <div className="bg-muted/30 rounded-lg p-3 animate-[slide-up_0.5s_ease-out_2.5s] opacity-0" style={{ animation: 'slide-up 0.5s ease-out 2.5s forwards' }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-xs font-medium">{language === 'en' ? 'Live Updates' : 'تحديثات مباشرة'}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Small floating shapes */}
         <Square className="absolute top-[40%] right-[15%] w-10 h-10 text-chart-2/15 animate-float-diagonal-reverse" style={{ animationDelay: '4s' }} />
         <Triangle className="absolute bottom-[45%] left-[18%] w-14 h-14 text-chart-4/15 animate-float" style={{ animationDelay: '5s' }} />
