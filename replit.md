@@ -16,12 +16,13 @@ A fully responsive bilingual (Arabic/English) landing page for MyBaby, an EdTech
 ## Technology Stack
 - Frontend: React + TypeScript + Wouter + TanStack Query
 - Backend: Express + Node.js
+- Database: PostgreSQL (Neon) with Drizzle ORM
 - UI Components: Shadcn/ui + Tailwind CSS
 - File Upload: Multer
 - Authentication: Session-based (cookie-parser)
 
 ## Brand Colors
-- Primary: #00ADEF (Bright Blue)
+- Primary: #0682F0 (Bright Blue)
 - Secondary Colors: #89AEFF, #EE7248, #DFFC8E, #F4AEDF, #2B885C, #333231
 
 ## Typography
@@ -55,20 +56,15 @@ node -e "const crypto = require('crypto'); const util = require('util'); const s
 3. Upload logo file (PNG, JPEG, or SVG, max 2MB)
 4. Logo will appear across all pages
 
-### Important Limitations
-⚠️ **In-Memory Storage**: The current implementation uses in-memory storage for:
-- Admin sessions
-- Branding settings (uploaded logo path)
+### Data Persistence
+✅ **PostgreSQL Database**: The application now uses persistent database storage for:
+- Admin sessions (persist across restarts)
+- Branding settings (custom logo path)
+- Client logos
+- Contact form submissions
+- Kindergarten onboarding requests
 
-This means:
-- Sessions will be lost on server restart (users need to re-login)
-- Custom logo will revert to default on server restart
-- Uploaded files remain in `server/uploads/` but the reference is lost
-
-To persist data across restarts, consider:
-1. Using the built-in PostgreSQL database (recommended)
-2. Implementing file-based storage
-3. Using external storage services
+**Note:** Uploaded files are stored in `server/uploads/` directory. The database stores file paths, ensuring references persist across restarts.
 
 ## Development
 
@@ -102,11 +98,14 @@ client/src/
 
 server/
 ├── routes.ts             # API routes
-├── storage.ts            # In-memory storage
+├── storage.ts            # Database storage (PostgreSQL)
 ├── lib/
 │   └── adminAuth.ts      # Admin authentication
 └── middleware/
     └── adminAuth.ts      # Auth middleware
+
+shared/
+└── schema.ts             # Drizzle database schema
 ```
 
 ## Security Notes
@@ -143,16 +142,50 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 
 ### Technical Details
 - **Backend:** `POST /api/kindergarten-onboarding` with multer file upload
-- **Storage:** In-memory (submissions persist until server restart)
+- **Storage:** PostgreSQL database (submissions persist permanently)
 - **Schema:** `kindergartenOnboarding` table with status tracking
 - **Email Notification:** TODO - requires email service credentials (Resend/SendGrid/other)
 
 ### Future Enhancements
 1. **Email Notification:** ⏰ **REMINDER: User wants to enable this later** - Once credentials are provided (Resend/SendGrid/SMTP), tech team will receive email alerts for new onboarding requests
-2. **Durable Storage:** Migrate to PostgreSQL for persistence across restarts
-3. **Status Workflow:** Add approval/rejection status management
+2. **Status Workflow:** Add approval/rejection status management
+3. **Admin Dashboard:** Add full admin interface to view and manage all submissions
+
+## Deployment Checklist
+
+### Required for Production
+1. ✅ **Database:** PostgreSQL configured and working
+2. ⚠️ **Admin Password:** Set `ADMIN_PASSWORD` or `ADMIN_PASSWORD_HASH` in deployment secrets
+3. ⚠️ **Session Secret:** Set `SESSION_SECRET` in deployment secrets (for cookie signing)
+4. ✅ **Database Connection:** Using HTTP-based Neon driver (no WebSocket required)
+5. ✅ **File Uploads:** Multer configured with size and type validation
+6. ✅ **Error Handling:** All routes have proper error handling
+
+### Deployment Steps
+1. Click "Publish" button in Replit
+2. Configure "Published app secrets":
+   - `ADMIN_PASSWORD`: Your secure admin password
+   - `SESSION_SECRET`: Random string for cookie signing (generate using: `openssl rand -base64 32`)
+   - `DATABASE_URL`: Auto-configured by Replit
+3. Verify deployment URL is accessible
+4. Test admin login with production credentials
+5. Upload logo via admin panel
+
+### Security Notes
+- ⚠️ Default admin credentials (admin/admin123) only work in development
+- Production deployment will FAIL if `ADMIN_PASSWORD` or `ADMIN_PASSWORD_HASH` is not set
+- All uploaded files are validated (type & size limits)
+- Admin sessions use HTTP-only cookies
+- All sensitive routes require authentication
 
 ## Recent Changes
+- 2025-10-22: **Production readiness update:**
+  - ✅ Implemented PostgreSQL database for all data persistence
+  - ✅ Fixed database connection to use HTTP instead of WebSocket (Neon compatibility)
+  - ✅ All features now persist across server restarts (logo, sessions, submissions)
+  - ✅ Updated primary brand color to #0682F0
+  - ✅ Restored Hero section with "Smart Management = More Time" and "360° Degree Management"
+  - 📝 Added deployment checklist and production requirements documentation
 - 2025-10-13: Applied Liquid Glass Button effect to "Join Free" button:
   - Integrated custom LiquidButton component with advanced glass morphism effect
   - Features liquid-like distortion using SVG filters (feTurbulence, feDisplacementMap)
