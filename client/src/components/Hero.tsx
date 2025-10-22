@@ -74,7 +74,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
             {language === 'en' 
               ? '360° Childcare Ecosystem for Saudi Arabia' 
-              : 'نظام بيئي شامل لرعاية الأطفال في السعودية'}
+              : 'حلول 360° لرعاية الأطفال في السعودية'}
           </h1>
 
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary rounded-full backdrop-blur-sm">
