@@ -225,17 +225,17 @@ export default function Hero() {
             {t('heroSubtext')}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-2">
             <Button 
               size="lg" 
-              className="gap-2"
+              className="gap-2 w-full sm:w-auto"
               onClick={handleGetDemo}
               data-testid="button-get-demo"
             >
               {t('getDemo')}
               <ArrowRight className="h-4 w-4" />
             </Button>
-            <Link href="/onboarding" className="relative group">
+            <Link href="/onboarding" className="relative group w-full sm:w-auto">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#FF6B35] via-[#F7931E] to-[#FF6B35] rounded-lg opacity-75 blur-lg animate-glow-pulse group-hover:opacity-100 transition duration-300"></div>
               <Button 
                 size="lg" 
