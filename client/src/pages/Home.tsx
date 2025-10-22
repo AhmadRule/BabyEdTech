@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
@@ -14,8 +13,10 @@ import CTA from '@/components/CTA';
 import StakeholderValue from '@/components/StakeholderValue';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
+import AIChatbot from '@/components/AIChatbot';
 import { ShoppingCart, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
@@ -114,6 +115,9 @@ export default function Home() {
           )}
         </div>
       )}
+
+      {/* AI Chatbot */}
+      <AIChatbot />
     </div>
   );
 }

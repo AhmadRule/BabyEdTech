@@ -7,8 +7,18 @@ import { requireAdmin } from "./middleware/adminAuth";
 import multer from "multer";
 import path from "path";
 import { z } from "zod";
+import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import crypto from 'crypto';
 
-const uploadsDir = path.join(process.cwd(), 'server', 'uploads');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const uploadsDir = path.join(__dirname, 'uploads');
+
+// Ensure uploads directory exists
+fs.mkdir(uploadsDir, { recursive: true });
 
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -102,22 +112,75 @@ const kindergartenOnboardingSchema = z.object({
   city: z.string().min(1, "City is required"),
 });
 
+// Helper function to generate a unique ID
+function generateId(): string {
+  return crypto.randomBytes(16).toString('hex');
+}
+
+// Placeholder knowledge base for products
+const productKnowledge = {
+  en: [
+    { id: generateId(), name: "MyBaby Diaper", description: "Soft and absorbent diapers for your little one.", features: ["Ultra-absorbent", "Leak protection", "Hypoallergenic"], price: "$25.99" },
+    { id: generateId(), name: "MyBaby Wipes", description: "Gentle and refreshing wet wipes.", features: ["Alcohol-free", "Hypoallergenic", "Plant-based"], price: "$12.50" },
+    { id: generateId(), name: "MyBaby Lotion", description: "Nourishing lotion to keep baby's skin soft.", features: ["Dermatologist-tested", "Fragrance-free", "Moisturizing"], price: "$18.00" }
+  ],
+  ar: [
+    { id: generateId(), name: "حفاضات MyBaby", description: "حفاضات ناعمة وماصة لطفلك.", features: ["امتصاص فائق", "حماية من التسرب", "مضادة للحساسية"], price: "25.99 دولار" },
+    { id: generateId(), name: "مناديل MyBaby المبللة", description: "مناديل مبللة لطيفة ومنعشة.", features: ["خالية من الكحول", "مضادة للحساسية", "نباتية"], price: "12.50 دولار" },
+    { id: generateId(), name: "لوشن MyBaby", description: "لوشن مغذي للحفاظ على بشرة الطفل ناعمة.", features: ["تم اختباره من قبل أطباء الجلد", "خالٍ من العطور", "مرطب"], price: "18.00 دولار" }
+  ]
+};
+
+// Helper function to get product knowledge based on language
+function getProductKnowledge(language: string = 'en') {
+  return productKnowledge[language] || productKnowledge.en;
+}
+
+// Placeholder function to generate AI response
+function generateResponse(message: string, language: string, knowledgeBase: any[]): string {
+  const lowerCaseMessage = message.toLowerCase();
+  const productName = knowledgeBase.find(p => lowerCaseMessage.includes(p.name.toLowerCase()));
+
+  if (productName) {
+    if (lowerCaseMessage.includes('description')) {
+      return productName.description;
+    } else if (lowerCaseMessage.includes('features')) {
+      return `Features of ${productName.name}: ${productName.features.join(', ')}`;
+    } else if (lowerCaseMessage.includes('price')) {
+      return `The price of ${productName.name} is ${productName.price}.`;
+    } else {
+      return productName.description; // Default to description if not specific
+    }
+  }
+
+  // Fallback responses
+  if (language === 'ar') {
+    if (lowerCaseMessage.includes('شكرا')) return 'على الرحب والسعة!';
+    if (lowerCaseMessage.includes('مرحبا')) return 'أهلاً بك! كيف يمكنني المساعدة اليوم؟';
+    return 'عذراً، ليس لدي معلومات حول هذا المنتج حالياً. هل يمكنك أن تسأل عن منتجاتنا مثل حفاضات MyBaby أو لوشن MyBaby؟';
+  } else {
+    if (lowerCaseMessage.includes('thank you')) return 'You\'re welcome!';
+    if (lowerCaseMessage.includes('hello')) return 'Hello! How can I assist you today?';
+    return 'Sorry, I don\'t have information on that specific product right now. You can ask about our products like MyBaby Diapers or MyBaby Lotion.';
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   app.use('/uploads', express.static(uploadsDir));
 
   app.post('/api/admin/login', async (req, res) => {
     try {
       const { username, password } = loginSchema.parse(req.body);
-      
+
       const isValid = await verifyAdminCredentials(username, password);
-      
+
       if (!isValid) {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
 
       const sessionToken = generateSessionToken();
       const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-      
+
       await storage.createAdminSession({
         sessionToken,
         expiresAt,
@@ -167,7 +230,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
 
         const logoPath = `/uploads/${req.file.filename}`;
-        
+
         await storage.updateBrandingSettings({ logoPath });
 
         res.json({ 
@@ -182,7 +245,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get('/api/logo', async (req, res) => {
     const settings = await storage.getBrandingSettings();
-    
+
     if (settings?.logoPath) {
       res.json({
         hasCustomLogo: true,
@@ -220,7 +283,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
 
         const logoPath = `/uploads/${req.file.filename}`;
-        
+
         const clientLogo = await storage.createClientLogo({
           name,
           logoPath,
@@ -256,10 +319,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Contact form submission
   app.post('/api/contact', async (req, res) => {
     try {
       const data = contactSubmissionSchema.parse(req.body);
-      
+
       const submission = await storage.createContactSubmission({
         name: data.name,
         email: data.email,
@@ -286,6 +350,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(submissions);
     } catch (error: any) {
       res.status(500).json({ error: error.message || 'Failed to fetch contact submissions' });
+    }
+  });
+
+  // AI Chat endpoint
+  app.post('/api/chat', async (req, res) => {
+    try {
+      const { message, language, history } = req.body;
+
+      // TODO: Replace with actual AI API integration (Grok, OpenAI, etc.)
+      // For now, this is a placeholder response
+
+      // Example using environment variable for API key
+      // const apiKey = process.env.GROK_API_KEY || process.env.OPENAI_API_KEY;
+
+      // Placeholder knowledge base - you'll replace this with actual AI API call
+      const knowledgeBase = getProductKnowledge(language);
+
+      // Simple keyword matching (replace with actual AI API)
+      let response = generateResponse(message, language, knowledgeBase);
+
+      res.json({ response });
+    } catch (error: any) {
+      console.error('Chat error:', error);
+      res.status(500).json({ 
+        error: error.message,
+        response: language === 'en' 
+          ? 'Sorry, I encountered an error. Please try again.' 
+          : 'عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.'
+      });
     }
   });
 
@@ -319,7 +412,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         // TODO: Send email notification when credentials are configured
         // Email should include: kindergarten name, contact info, and logo URL
-        
+
         res.json({ 
           success: true, 
           message: 'Onboarding request submitted successfully',
