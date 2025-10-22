@@ -12,6 +12,7 @@ import saudiBaby from '@assets/saudi_baby.png';
 import toddlerNursery from '@assets/toddler_nursery.png';
 import nurseryClassroom from '@assets/nursery_classroom.png';
 import ipadMockup from '@assets/ipad_mockup.png';
+import myBabyLogo from '@assets/Untitled design_1761155212803.png';
 
 export default function Hero() {
   const { t, language, formatNumber } = useLanguage();
@@ -66,12 +67,7 @@ export default function Hero() {
             <div className="h-full bg-white p-4 pt-8">
               {/* Header with MyBaby logo */}
               <div className="flex items-center justify-between mb-6 animate-[slide-up_0.5s_ease-out]">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">my</span>
-                  </div>
-                  <span className="font-bold text-xl text-primary">BABY</span>
-                </div>
+                <img src={myBabyLogo} alt="MyBaby" className="h-8 w-auto object-contain" />
                 <div className="text-xs text-muted-foreground">
                   {language === 'en' ? 'Today' : 'اليوم'}
                 </div>
