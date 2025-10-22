@@ -7,8 +7,9 @@ export default function Analytics() {
   
   useEffect(() => {
     // Only track in production
-    if (import.meta.env.PROD && window.gtag) {
-      window.gtag('config', 'GA_MEASUREMENT_ID', {
+    const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    if (import.meta.env.PROD && window.gtag && GA_ID) {
+      window.gtag('config', GA_ID, {
         page_path: location,
       });
     }
