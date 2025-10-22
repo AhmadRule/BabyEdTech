@@ -6,7 +6,6 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
-import BabyBirdCharacter from '@/components/BabyBirdCharacter';
 
 interface Message {
   id: string;
@@ -107,8 +106,8 @@ export default function AIChatbot() {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-primary to-[#F7931E] text-white rounded-t-lg">
             <div className="flex items-center gap-3">
-              <div className="bg-white rounded-full p-1">
-                <BabyBirdCharacter emotion="happy" size="sm" />
+              <div className="bg-white rounded-full p-2">
+                <Sparkles className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-bold">
