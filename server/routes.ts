@@ -45,8 +45,11 @@ const upload = multer({
   storage: multerStorage,
   limits: { fileSize: 2 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml'];
-    if (allowedTypes.includes(file.mimetype)) {
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', 'image/svg'];
+    const ext = path.extname(file.originalname).toLowerCase();
+    const allowedExtensions = ['.png', '.jpeg', '.jpg', '.svg'];
+    
+    if (allowedTypes.includes(file.mimetype) || allowedExtensions.includes(ext)) {
       cb(null, true);
     } else {
       cb(new Error('Invalid file type. Only PNG, JPEG, and SVG are allowed.'));
@@ -58,8 +61,11 @@ const uploadClientLogo = multer({
   storage: clientLogoStorage,
   limits: { fileSize: 2 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml'];
-    if (allowedTypes.includes(file.mimetype)) {
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', 'image/svg'];
+    const ext = path.extname(file.originalname).toLowerCase();
+    const allowedExtensions = ['.png', '.jpeg', '.jpg', '.svg'];
+    
+    if (allowedTypes.includes(file.mimetype) || allowedExtensions.includes(ext)) {
       cb(null, true);
     } else {
       cb(new Error('Invalid file type. Only PNG, JPEG, and SVG are allowed.'));
@@ -82,8 +88,11 @@ const uploadKindergartenLogo = multer({
   storage: kindergartenLogoStorage,
   limits: { fileSize: 2 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml'];
-    if (allowedTypes.includes(file.mimetype)) {
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', 'image/svg'];
+    const ext = path.extname(file.originalname).toLowerCase();
+    const allowedExtensions = ['.png', '.jpeg', '.jpg', '.svg'];
+    
+    if (allowedTypes.includes(file.mimetype) || allowedExtensions.includes(ext)) {
       cb(null, true);
     } else {
       cb(new Error('Invalid file type. Only PNG, JPEG, and SVG are allowed.'));
