@@ -264,7 +264,7 @@ export default function KindergartenOnboarding() {
                       <Input
                         id="logo"
                         type="file"
-                        accept="image/png,image/jpeg,image/jpg,image/svg+xml"
+                        accept="image/png,image/jpeg,image/jpg,image/svg+xml,.svg"
                         {...form.register("logo")}
                         onChange={(e) => {
                           form.register("logo").onChange(e);

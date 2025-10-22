@@ -245,7 +245,7 @@ export default function AdminLogo() {
                     <Input
                       id="logo-upload"
                       type="file"
-                      accept="image/png,image/jpeg,image/jpg,image/svg+xml"
+                      accept="image/png,image/jpeg,image/jpg,image/svg+xml,.svg"
                       onChange={handleFileChange}
                       data-testid="input-logo-file"
                     />
@@ -304,7 +304,7 @@ export default function AdminLogo() {
                       <Input
                         id="client-logo-upload"
                         type="file"
-                        accept="image/png,image/jpeg,image/jpg,image/svg+xml"
+                        accept="image/png,image/jpeg,image/jpg,image/svg+xml,.svg"
                         onChange={handleClientLogoFileChange}
                         data-testid="input-client-logo-file"
                       />
