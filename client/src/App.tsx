@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Home from "@/pages/Home";
 import AdminLogin from "@/pages/AdminLogin";
+import AdminDashboard from "@/pages/AdminDashboard";
 import AdminLogo from "@/pages/AdminLogo";
 import KindergartenOnboarding from "@/pages/KindergartenOnboarding";
 import NotFound from "@/pages/not-found";
