@@ -112,8 +112,15 @@ function SaaSDemo({ color, language }: { color: string; language: string }) {
           {/* Header */}
           <div className="bg-gradient-to-r from-primary to-primary/80 p-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Building2 className="h-6 w-6 text-white" />
-              <span className="text-white font-bold">MyBaby Dashboard</span>
+              <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" fill="white" fillOpacity="0.2"/>
+                <circle cx="20" cy="20" r="14" fill="white"/>
+                <path d="M20 10C15 10 12 13 12 17C12 21 15 24 20 28C25 24 28 21 28 17C28 13 25 10 20 10Z" fill="#0682F0"/>
+                <circle cx="20" cy="17" r="3" fill="white"/>
+              </svg>
+              <span className="text-white font-bold" dir="rtl">
+                {language === 'en' ? 'MyBaby Dashboard' : 'منصة ماي بيبي'}
+              </span>
             </div>
             <div className="flex gap-2">
               <div className="w-8 h-8 bg-white/20 rounded-full" />
