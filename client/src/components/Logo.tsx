@@ -22,7 +22,7 @@ export default function Logo({ className = "" }: LogoProps) {
         <img 
           src={logoData.logoUrl} 
           alt="MyBaby Logo" 
-          className="h-10 md:h-12 w-auto object-contain"
+          className="h-16 md:h-20 w-auto object-contain"
         />
         <span className="text-[10px] text-muted-foreground mt-0.5">{t('madeInSaudi')}</span>
       </div>
