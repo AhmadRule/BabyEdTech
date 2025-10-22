@@ -541,3 +541,109 @@
 .animate-bounce-subtle {
   animation: bounce-subtle 2s ease-in-out infinite;
 }
+
+/* Product Demo Animations */
+@keyframes cursor-move-saas {
+  0%, 100% { transform: translate(0, 0); }
+  15% { transform: translate(200px, 150px); }
+  30% { transform: translate(400px, 250px); }
+  45% { transform: translate(300px, 350px); }
+  60% { transform: translate(500px, 320px); }
+  75% { transform: translate(600px, 400px); }
+}
+
+@keyframes cursor-move-mulak {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(150px, 200px); }
+  40% { transform: translate(450px, 180px); }
+  60% { transform: translate(350px, 320px); }
+  80% { transform: translate(550px, 420px); }
+}
+
+@keyframes cursor-move-marketplace {
+  0%, 100% { transform: translate(0, 0); }
+  15% { transform: translate(250px, 150px); }
+  35% { transform: translate(400px, 200px); }
+  50% { transform: translate(350px, 280px); }
+  70% { transform: translate(300px, 350px); }
+  85% { transform: translate(400px, 450px); }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-up {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes modal-appear {
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.8); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, 0) scale(1); 
+  }
+}
+
+@keyframes fill-bar {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes notification-slide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes grow-bar {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+@keyframes fill-progress {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes card-flip {
+  from { 
+    opacity: 0; 
+    transform: rotateY(90deg); 
+  }
+  to { 
+    opacity: 1; 
+    transform: rotateY(0); 
+  }
+}
+
+@keyframes scroll-cards {
+  from { transform: translateX(20px); }
+  to { transform: translateX(0); }
+}
+
+@keyframes card-appear {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes select-date {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}

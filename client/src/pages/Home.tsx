@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import SocialProof from '@/components/SocialProof';
 import ProductSelector from '@/components/ProductSelector';
+import ProductDemo from '@/components/ProductDemo';
 import Features from '@/components/Features';
 import PlatformShowcase from '@/components/PlatformShowcase';
 import TabbedFeatures from '@/components/TabbedFeatures';
@@ -51,6 +52,7 @@ export default function Home() {
       <Hero />
       <SocialProof />
       <ProductSelector />
+      <ProductDemo />
       <IntegrationBenefits />
       <Features />
       <PlatformShowcase />
