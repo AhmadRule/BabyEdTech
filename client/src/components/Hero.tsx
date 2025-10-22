@@ -72,11 +72,17 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative z-10">
         <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto" data-testid="text-hero-title">
-            {t('heroTitle1')}
+            {language === 'en' 
+              ? '360° Childcare Ecosystem for Saudi Arabia' 
+              : 'نظام بيئي شامل لرعاية الأطفال في السعودية'}
           </h1>
 
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary rounded-full backdrop-blur-sm">
-            <span className="text-lg md:text-xl font-medium">{t('heroTagline')}</span>
+            <span className="text-lg md:text-xl font-medium">
+              {language === 'en' 
+                ? 'Management • Analytics • Marketplace - All in One' 
+                : 'إدارة • تحليلات • سوق - الكل في واحد'}
+            </span>
           </div>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtext">

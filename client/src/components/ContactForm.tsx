@@ -19,11 +19,16 @@ const contactFormSchema = z.object({
   phone: z.string().min(1, 'Phone number is required'),
   nurseryName: z.string().min(1, 'Nursery name is required'),
   message: z.string().optional(),
+  selectedProducts: z.array(z.string()).optional(),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
-export default function ContactForm() {
+interface ContactFormProps {
+  selectedProducts?: string[];
+}
+
+export default function ContactForm({ selectedProducts = [] }: ContactFormProps) {
   const { language, t } = useLanguage();
   const { toast } = useToast();
   const [isSuccess, setIsSuccess] = useState(false);
@@ -36,6 +41,7 @@ export default function ContactForm() {
       phone: '',
       nurseryName: '',
       message: '',
+      selectedProducts: selectedProducts,
     },
   });
 
