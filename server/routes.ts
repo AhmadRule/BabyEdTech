@@ -419,8 +419,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
           logoPath,
         });
 
-        // TODO: Send email notification when credentials are configured
+        // TODO: Send email notification - Set up one of these in Secrets:
+        // Option 1: RESEND_API_KEY (recommended - resend.com)
+        // Option 2: SENDGRID_API_KEY (sendgrid.com)
+        // Option 3: SMTP credentials (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)
         // Email should include: kindergarten name, contact info, and logo URL
+        
+        if (process.env.RESEND_API_KEY) {
+          // Send email notification here
+          console.log('📧 New kindergarten onboarding:', validatedData.kindergartenName);
+        }
 
         res.json({ 
           success: true, 

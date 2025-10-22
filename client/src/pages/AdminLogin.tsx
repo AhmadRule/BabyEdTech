@@ -27,7 +27,7 @@ export default function AdminLogin() {
         description: 'Logged in successfully',
       });
 
-      setLocation('/admin/logo');
+      setLocation('/admin/dashboard');
     } catch (error: any) {
       toast({
         title: 'Error',

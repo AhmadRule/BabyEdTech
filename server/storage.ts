@@ -7,21 +7,21 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  
+
   getBrandingSettings(): Promise<BrandingSettings | undefined>;
   updateBrandingSettings(settings: InsertBrandingSettings): Promise<BrandingSettings>;
-  
+
   createAdminSession(session: InsertAdminSession): Promise<AdminSession>;
   getAdminSession(sessionToken: string): Promise<AdminSession | undefined>;
   deleteAdminSession(sessionToken: string): Promise<void>;
-  
+
   createClientLogo(logo: InsertClientLogo): Promise<ClientLogo>;
   getAllClientLogos(): Promise<ClientLogo[]>;
   deleteClientLogo(id: string): Promise<void>;
-  
+
   createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission>;
   getAllContactSubmissions(): Promise<ContactSubmission[]>;
-  
+
   createKindergartenOnboarding(onboarding: InsertKindergartenOnboarding): Promise<KindergartenOnboarding>;
   getAllKindergartenOnboardings(): Promise<KindergartenOnboarding[]>;
 }
@@ -142,7 +142,7 @@ export class MemStorage implements IStorage {
   }
 
   async getAllContactSubmissions(): Promise<ContactSubmission[]> {
-    return Array.from(this.contactSubmissions.values()).sort((a, b) => 
+    return Array.from(this.contactSubmissions.values()).sort((a, b) =>
       (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
     );
   }
@@ -165,7 +165,7 @@ export class MemStorage implements IStorage {
   }
 
   async getAllKindergartenOnboardings(): Promise<KindergartenOnboarding[]> {
-    return Array.from(this.kindergartenOnboardings.values()).sort((a, b) => 
+    return Array.from(this.kindergartenOnboardings.values()).sort((a, b) =>
       (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
     );
   }
@@ -200,7 +200,7 @@ export class DbStorage implements IStorage {
 
   async updateBrandingSettings(settings: InsertBrandingSettings): Promise<BrandingSettings> {
     const existing = await this.getBrandingSettings();
-    
+
     if (existing) {
       const result = await this.db
         .update(brandingSettings)
@@ -225,7 +225,7 @@ export class DbStorage implements IStorage {
   async getAdminSession(sessionToken: string): Promise<AdminSession | undefined> {
     const result = await this.db.select().from(adminSessions).where(eq(adminSessions.sessionToken, sessionToken));
     const session = result[0];
-    
+
     if (session && session.expiresAt > new Date()) {
       return session;
     }
@@ -264,7 +264,7 @@ export class DbStorage implements IStorage {
 
   async getAllContactSubmissions(): Promise<ContactSubmission[]> {
     const result = await this.db.select().from(contactSubmissions);
-    return result.sort((a, b) => 
+    return result.sort((a, b) =>
       (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
     );
   }
@@ -276,7 +276,7 @@ export class DbStorage implements IStorage {
 
   async getAllKindergartenOnboardings(): Promise<KindergartenOnboarding[]> {
     const result = await this.db.select().from(kindergartenOnboarding);
-    return result.sort((a, b) => 
+    return result.sort((a, b) =>
       (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
     );
   }
