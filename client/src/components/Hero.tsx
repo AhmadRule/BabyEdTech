@@ -12,7 +12,7 @@ import saudiBaby from '@assets/saudi_baby.png';
 import toddlerNursery from '@assets/toddler_nursery.png';
 import nurseryClassroom from '@assets/nursery_classroom.png';
 import ipadMockup from '@assets/ipad_mockup.png';
-import myBabyLogo from '@assets/Untitled design (1)_1761155422458.png';
+import myBabyLogo from '@assets/Untitled design (3)_1761156590952.png';
 
 export default function Hero() {
   const { t, language, formatNumber } = useLanguage();
