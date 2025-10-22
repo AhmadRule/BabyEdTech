@@ -5,6 +5,8 @@ A fully responsive bilingual (Arabic/English) landing page for MyBaby, an EdTech
 
 ## Key Features
 - Bilingual support (English/Arabic) with RTL layout switching
+  - **Default language: Arabic** - Landing page loads in Arabic by default with RTL layout
+  - Users can toggle to English using the language switcher in the navigation
 - Responsive design optimized for all devices
 - Admin panel for logo customization via file upload
 - Client logos management system
