@@ -7,6 +7,7 @@ A fully responsive bilingual (Arabic/English) landing page for MyBaby, an EdTech
 - Bilingual support (English/Arabic) with RTL layout switching
   - **Default language: Arabic** - Landing page loads in Arabic by default with RTL layout
   - Users can toggle to English using the language switcher in the navigation
+  - **Language persistence** - Selected language is saved to localStorage and persists across page refreshes
 - Responsive design optimized for all devices
 - Admin panel for logo customization via file upload
 - Client logos management system
@@ -181,6 +182,14 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 - All sensitive routes require authentication
 
 ## Recent Changes
+- 2025-11-05: **Language persistence and mobile responsiveness improvements:**
+  - ✅ Implemented language persistence using localStorage
+  - ✅ User language preference (Arabic/English) now saves automatically
+  - ✅ Language selection persists across page refreshes and browser sessions
+  - ✅ Fixed mobile Hero CTA button overlapping on iPhone SE and iPhone 15 Plus
+  - ✅ Increased button gap from gap-4 to gap-6 for better mobile spacing
+  - ✅ Made CTA buttons full-width on mobile (w-full sm:w-auto) for better UX
+  - 🔑 localStorage key: `mybaby-language` (values: 'ar' or 'en')
 - 2025-10-22: **Production readiness update:**
   - ✅ Implemented PostgreSQL database for all data persistence
   - ✅ Fixed database connection to use HTTP instead of WebSocket (Neon compatibility)
