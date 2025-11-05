@@ -182,14 +182,16 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 - All sensitive routes require authentication
 
 ## Recent Changes
-- 2025-11-05: **Language persistence and mobile responsiveness improvements:**
+- 2025-11-05: **Language persistence, mobile responsiveness, and logo fix:**
   - ✅ Implemented language persistence using localStorage
   - ✅ User language preference (Arabic/English) now saves automatically
   - ✅ Language selection persists across page refreshes and browser sessions
   - ✅ Fixed mobile Hero CTA button overlapping on iPhone SE and iPhone 15 Plus
   - ✅ Increased button gap from gap-4 to gap-6 for better mobile spacing
   - ✅ Made CTA buttons full-width on mobile (w-full sm:w-auto) for better UX
+  - ✅ Fixed logo display issue - restored dynamic branding system
   - 🔑 localStorage key: `mybaby-language` (values: 'ar' or 'en')
+  - 🔧 Logo now fetches from `/api/logo` instead of hardcoded path
 - 2025-10-22: **Production readiness update:**
   - ✅ Implemented PostgreSQL database for all data persistence
   - ✅ Fixed database connection to use HTTP instead of WebSocket (Neon compatibility)
