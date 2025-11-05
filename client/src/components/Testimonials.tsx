@@ -61,20 +61,20 @@ export default function Testimonials() {
 
   // Auto-scroll functionality
   useEffect(() => {
-    const startAutoScroll = () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-      
-      if (!isPaused) {
-        intervalRef.current = setInterval(() => {
-          setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-        }, 5000); // 5 seconds
-      }
-    };
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    
+    // Only start auto-scroll when not paused
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+      }, 5000); // 5 seconds
+    }
 
-    startAutoScroll();
-
+    // Cleanup on unmount or when dependencies change
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -84,16 +84,10 @@ export default function Testimonials() {
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-    // Reset auto-scroll timer when user manually navigates
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 100);
   };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-    // Reset auto-scroll timer when user manually navigates
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 100);
   };
 
   const visibleTestimonials = [
@@ -196,9 +190,6 @@ export default function Testimonials() {
                   key={idx}
                   onClick={() => {
                     setCurrentIndex(idx);
-                    // Reset auto-scroll timer when user manually navigates
-                    setIsPaused(true);
-                    setTimeout(() => setIsPaused(false), 100);
                   }}
                   className={`w-2 h-2 rounded-full transition-all ${
                     idx === currentIndex ? 'bg-primary w-8' : 'bg-muted'

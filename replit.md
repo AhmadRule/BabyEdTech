@@ -34,6 +34,7 @@ MyBaby is an EdTech SaaS platform, and this project delivers its fully responsiv
 - **Admin Panel:** Accessible at `/admin/login`. Manages custom logo uploads (PNG, JPEG, SVG, max 2MB) and editable statistics (Nurseries Count, Happy Parents Count, App Store Rating).
 - **Kindergarten Onboarding:** Public form at `/onboarding` for kindergartens to register, capturing details like name, contact, email, phone, city, and logo.
 - **Stakeholder Value Diagram:** Interactive hub-and-spoke diagram illustrating MyBaby's ecosystem and benefits for parents, teachers, administrators, and better care.
+- **Auto-Scroll Testimonials:** Testimonials carousel automatically advances every 5 seconds with smooth fade-in transitions. Auto-scroll pauses when user hovers over the section and resumes when mouse leaves.
 
 ### External Dependencies
 - **PostgreSQL (Neon):** Database for all persistent data storage.
