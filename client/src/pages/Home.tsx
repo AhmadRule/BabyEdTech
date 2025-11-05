@@ -119,7 +119,7 @@ export default function Home() {
       )}
 
       {/* AI Chatbot */}
-      <AIChatbot />
+      {/* <AIChatbot /> */}
     </div>
   );
 }
