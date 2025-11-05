@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'wouter';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
 import Logo from '@/components/Logo';
-import { Upload, LogOut, Trash2, Building2, MessageSquare } from 'lucide-react';
+import { Upload, LogOut, Trash2, Building2, MessageSquare, LayoutDashboard } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import type { ClientLogo, ContactSubmission } from '@shared/schema';
 
@@ -178,6 +178,10 @@ export default function AdminLogo() {
     }
   };
 
+  const handleClientNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setClientName(e.target.value);
+  }, []);
+
   if (authLoading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
@@ -191,14 +195,24 @@ export default function AdminLogo() {
       <div className="max-w-6xl mx-auto py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Admin Panel</h1>
-          <Button
-            variant="outline"
-            onClick={() => logoutMutation.mutate()}
-            data-testid="button-logout"
-          >
-            <LogOut className="h-4 w-4 mr-2" />
-            Logout
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setLocation('/admin/dashboard')}
+              data-testid="button-dashboard"
+            >
+              <LayoutDashboard className="h-4 w-4 mr-2" />
+              Dashboard
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => logoutMutation.mutate()}
+              data-testid="button-logout"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              Logout
+            </Button>
+          </div>
         </div>
 
         <Tabs defaultValue="logo" className="w-full">
@@ -293,7 +307,7 @@ export default function AdminLogo() {
                       <Input
                         id="client-name"
                         value={clientName}
-                        onChange={(e) => setClientName(e.target.value)}
+                        onChange={handleClientNameChange}
                         placeholder="e.g., Little Stars Nursery"
                         data-testid="input-client-name"
                       />
