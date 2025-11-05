@@ -10,7 +10,7 @@ import { apiRequest } from '@/lib/queryClient';
 import Logo from '@/components/Logo';
 import { Upload, LogOut, Trash2, Building2, MessageSquare, LayoutDashboard } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import type { ClientLogo, ContactSubmission } from '@shared/schema';
+import type { ClientLogo, ContactSubmission, SiteSettings } from '@shared/schema';
 
 export default function AdminLogo() {
   const [, setLocation] = useLocation();
@@ -21,6 +21,9 @@ export default function AdminLogo() {
   const [clientLogoFile, setClientLogoFile] = useState<File | null>(null);
   const [clientLogoPreview, setClientLogoPreview] = useState<string | null>(null);
   const [clientName, setClientName] = useState('');
+  const [nurseriesCount, setNurseriesCount] = useState('500+');
+  const [parentsCount, setParentsCount] = useState('10,000+');
+  const [appStoreRating, setAppStoreRating] = useState('4.9');
 
   const { data: authCheck, isLoading: authLoading } = useQuery({
     queryKey: ['/api/admin/me'],
@@ -39,11 +42,23 @@ export default function AdminLogo() {
     queryKey: ['/api/admin/contact-submissions'],
   });
 
+  const { data: siteSettings } = useQuery<SiteSettings>({
+    queryKey: ['/api/site-settings'],
+  });
+
   useEffect(() => {
     if (!authLoading && !authCheck) {
       setLocation('/admin/login');
     }
   }, [authCheck, authLoading, setLocation]);
+
+  useEffect(() => {
+    if (siteSettings) {
+      setNurseriesCount(siteSettings.nurseriesCount);
+      setParentsCount(siteSettings.parentsCount);
+      setAppStoreRating(siteSettings.appStoreRating);
+    }
+  }, [siteSettings]);
 
   const uploadMutation = useMutation({
     mutationFn: async (file: File) => {
@@ -155,6 +170,26 @@ export default function AdminLogo() {
     },
   });
 
+  const updateStatisticsMutation = useMutation({
+    mutationFn: async (data: { nurseriesCount: string; parentsCount: string; appStoreRating: string }) => {
+      return await apiRequest('POST', '/api/admin/site-settings', data);
+    },
+    onSuccess: () => {
+      toast({
+        title: 'Success',
+        description: 'Statistics updated successfully',
+      });
+      queryClient.invalidateQueries({ queryKey: ['/api/site-settings'] });
+    },
+    onError: (error: any) => {
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to update statistics',
+        variant: 'destructive',
+      });
+    },
+  });
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -188,6 +223,14 @@ export default function AdminLogo() {
   const handleClientNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setClientName(e.target.value);
   }, []);
+
+  const handleUpdateStatistics = () => {
+    updateStatisticsMutation.mutate({
+      nurseriesCount,
+      parentsCount,
+      appStoreRating,
+    });
+  };
 
   if (authLoading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
@@ -223,7 +266,7 @@ export default function AdminLogo() {
         </div>
 
         <Tabs defaultValue="logo" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="logo" data-testid="tab-logo">
               <Upload className="h-4 w-4 mr-2" />
               Logo Management
@@ -231,6 +274,10 @@ export default function AdminLogo() {
             <TabsTrigger value="clients" data-testid="tab-clients">
               <Building2 className="h-4 w-4 mr-2" />
               Client Logos
+            </TabsTrigger>
+            <TabsTrigger value="statistics" data-testid="tab-statistics">
+              <Users className="h-4 w-4 mr-2" />
+              Statistics
             </TabsTrigger>
             <TabsTrigger value="contacts" data-testid="tab-contacts">
               <MessageSquare className="h-4 w-4 mr-2" />
@@ -388,6 +435,67 @@ export default function AdminLogo() {
                 ) : (
                   <p className="col-span-full text-center text-muted-foreground py-8">No client logos yet</p>
                 )}
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="statistics">
+            <Card className="p-6 max-w-2xl">
+              <h2 className="text-xl font-semibold mb-4">Landing Page Statistics</h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                Update the statistics displayed on the Hero section and Social Proof components of the landing page.
+              </p>
+              <div className="space-y-6">
+                <div>
+                  <Label htmlFor="nurseries-count">Nurseries Count</Label>
+                  <Input
+                    id="nurseries-count"
+                    value={nurseriesCount}
+                    onChange={(e) => setNurseriesCount(e.target.value)}
+                    placeholder="e.g., 500+"
+                    data-testid="input-nurseries-count"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Number of nurseries using MyBaby (e.g., "500+", "1,000+")
+                  </p>
+                </div>
+
+                <div>
+                  <Label htmlFor="parents-count">Happy Parents Count</Label>
+                  <Input
+                    id="parents-count"
+                    value={parentsCount}
+                    onChange={(e) => setParentsCount(e.target.value)}
+                    placeholder="e.g., 10,000+"
+                    data-testid="input-parents-count"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Number of happy parents (e.g., "10,000+", "50,000+")
+                  </p>
+                </div>
+
+                <div>
+                  <Label htmlFor="app-store-rating">App Store Rating</Label>
+                  <Input
+                    id="app-store-rating"
+                    value={appStoreRating}
+                    onChange={(e) => setAppStoreRating(e.target.value)}
+                    placeholder="e.g., 4.9"
+                    data-testid="input-app-store-rating"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    App Store rating (e.g., "4.9", "4.8")
+                  </p>
+                </div>
+
+                <Button
+                  onClick={handleUpdateStatistics}
+                  disabled={updateStatisticsMutation.isPending}
+                  className="w-full gap-2"
+                  data-testid="button-update-statistics"
+                >
+                  {updateStatisticsMutation.isPending ? 'Updating...' : 'Update Statistics'}
+                </Button>
               </div>
             </Card>
           </TabsContent>
