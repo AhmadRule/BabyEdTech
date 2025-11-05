@@ -268,6 +268,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Site settings endpoints
+  app.get('/api/site-settings', async (req, res) => {
+    try {
+      const settings = await storage.getSiteSettings();
+      
+      if (settings) {
+        res.json(settings);
+      } else {
+        // Return default values if not set
+        res.json({
+          nurseriesCount: "500+",
+          parentsCount: "10,000+",
+          appStoreRating: "4.9"
+        });
+      }
+    } catch (error: any) {
+      res.status(500).json({ error: error.message || 'Failed to fetch site settings' });
+    }
+  });
+
+  app.post('/api/admin/site-settings', requireAdmin, async (req, res) => {
+    try {
+      const { nurseriesCount, parentsCount, appStoreRating } = req.body;
+      
+      const settings = await storage.updateSiteSettings({
+        nurseriesCount,
+        parentsCount,
+        appStoreRating
+      });
+      
+      res.json({ success: true, settings });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message || 'Failed to update site settings' });
+    }
+  });
+
   app.post('/api/admin/client-logos', requireAdmin, (req, res) => {
     uploadClientLogo.single('logo')(req, res, async (err) => {
       if (err) {
