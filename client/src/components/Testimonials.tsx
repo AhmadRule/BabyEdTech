@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -8,6 +8,8 @@ import { ChevronLeft, ChevronRight, Quote, Heart, Star } from 'lucide-react';
 export default function Testimonials() {
   const { language, t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const testimonials = [
     {
@@ -57,12 +59,41 @@ export default function Testimonials() {
     }
   ];
 
+  // Auto-scroll functionality
+  useEffect(() => {
+    const startAutoScroll = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      
+      if (!isPaused) {
+        intervalRef.current = setInterval(() => {
+          setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+        }, 5000); // 5 seconds
+      }
+    };
+
+    startAutoScroll();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused, testimonials.length]);
+
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    // Reset auto-scroll timer when user manually navigates
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 100);
   };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    // Reset auto-scroll timer when user manually navigates
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 100);
   };
 
   const visibleTestimonials = [
@@ -114,12 +145,16 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        <div className="relative">
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 transition-all duration-500">
             {visibleTestimonials.map((testimonial, idx) => (
               <Card
                 key={currentIndex + idx}
-                className="p-6 md:p-8 hover-elevate"
+                className="p-6 md:p-8 hover-elevate animate-fade-in"
                 data-testid={`card-testimonial-${idx + 1}`}
               >
                 <Quote className="h-8 w-8 text-primary/40 mb-4" />
@@ -159,7 +194,12 @@ export default function Testimonials() {
               {testimonials.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
+                  onClick={() => {
+                    setCurrentIndex(idx);
+                    // Reset auto-scroll timer when user manually navigates
+                    setIsPaused(true);
+                    setTimeout(() => setIsPaused(false), 100);
+                  }}
                   className={`w-2 h-2 rounded-full transition-all ${
                     idx === currentIndex ? 'bg-primary w-8' : 'bg-muted'
                   }`}
