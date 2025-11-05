@@ -13,9 +13,15 @@ import toddlerNursery from '@assets/toddler_nursery.png';
 import nurseryClassroom from '@assets/nursery_classroom.png';
 import ipadMockup from '@assets/ipad_mockup.png';
 import myBabyLogo from '@assets/Untitled design (3)_1761156590952.png';
+import { useQuery } from '@tanstack/react-query';
+import type { SiteSettings } from '@shared/schema';
 
 export default function Hero() {
   const { t, language, formatNumber } = useLanguage();
+
+  const { data: siteSettings } = useQuery<SiteSettings>({
+    queryKey: ['/api/site-settings'],
+  });
 
   const handleGetDemo = () => {
     console.log('Get Demo clicked');
@@ -257,7 +263,7 @@ export default function Hero() {
               <div className="absolute -top-3 -right-3 w-16 h-16 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-colors" />
               <Building2 className="h-8 w-8 text-primary mb-3" />
               <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-nurseries">
-                {formatNumber('500+')}
+                {formatNumber(siteSettings?.nurseriesCount || '500+')}
               </div>
               <div className="text-sm text-muted-foreground">
                 {t('nurseries')}
@@ -269,7 +275,7 @@ export default function Hero() {
               <div className="absolute -top-3 -right-3 w-16 h-16 bg-chart-2/10 rounded-full blur-xl group-hover:bg-chart-2/20 transition-colors" />
               <Users className="h-8 w-8 text-chart-2 mb-3" />
               <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-parents">
-                {formatNumber('10,000+')}
+                {formatNumber(siteSettings?.parentsCount || '10,000+')}
               </div>
               <div className="text-sm text-muted-foreground">
                 {t('happyParents')}
@@ -285,7 +291,7 @@ export default function Hero() {
                 ))}
               </div>
               <div className="text-3xl font-bold text-foreground mb-1" data-testid="stat-rating">
-                {formatNumber('4.9')}
+                {formatNumber(siteSettings?.appStoreRating || '4.9')}
               </div>
               <div className="text-sm text-muted-foreground">
                 {t('appStoreRating')}
