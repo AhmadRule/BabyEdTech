@@ -1,34 +1,11 @@
-
-import { useQuery } from '@tanstack/react-query';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface LogoProps {
   className?: string;
 }
 
-interface LogoData {
-  hasCustomLogo: boolean;
-  logoUrl: string | null;
-}
-
 export default function Logo({ className = "" }: LogoProps) {
-  const { data: logoData } = useQuery<LogoData>({
-    queryKey: ['/api/logo'],
-  });
   const { t } = useLanguage();
-
-  if (logoData?.hasCustomLogo && logoData.logoUrl) {
-    return (
-      <div className={`flex flex-col ${className}`}>
-        <img 
-          src={logoData.logoUrl} 
-          alt="MyBaby Logo" 
-          className="h-16 md:h-20 w-auto object-contain"
-        />
-        <span className="text-[10px] text-muted-foreground mt-0.5">{t('madeInSaudi')}</span>
-      </div>
-    );
-  }
 
   return (
     <div className={`flex flex-col ${className}`}>
