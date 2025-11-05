@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type BrandingSettings, type InsertBrandingSettings, type AdminSession, type InsertAdminSession, type ClientLogo, type InsertClientLogo, type ContactSubmission, type InsertContactSubmission, type KindergartenOnboarding, type InsertKindergartenOnboarding, users, brandingSettings, adminSessions, clientLogos, contactSubmissions, kindergartenOnboarding } from "@shared/schema";
+import { type User, type InsertUser, type BrandingSettings, type InsertBrandingSettings, type AdminSession, type InsertAdminSession, type ClientLogo, type InsertClientLogo, type ContactSubmission, type InsertContactSubmission, type KindergartenOnboarding, type InsertKindergartenOnboarding, type SiteSettings, type InsertSiteSettings, users, brandingSettings, adminSessions, clientLogos, contactSubmissions, kindergartenOnboarding, siteSettings } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
@@ -25,6 +25,9 @@ export interface IStorage {
 
   createKindergartenOnboarding(onboarding: InsertKindergartenOnboarding): Promise<KindergartenOnboarding>;
   getAllKindergartenOnboardings(): Promise<KindergartenOnboarding[]>;
+
+  getSiteSettings(): Promise<SiteSettings | undefined>;
+  updateSiteSettings(settings: InsertSiteSettings): Promise<SiteSettings>;
 }
 
 export class MemStorage implements IStorage {
@@ -34,6 +37,7 @@ export class MemStorage implements IStorage {
   private clientLogos: Map<string, ClientLogo>;
   private contactSubmissions: Map<string, ContactSubmission>;
   private kindergartenOnboardings: Map<string, KindergartenOnboarding>;
+  private siteSettings: SiteSettings | undefined;
 
   constructor() {
     this.users = new Map();
@@ -170,6 +174,23 @@ export class MemStorage implements IStorage {
       (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
     );
   }
+
+  async getSiteSettings(): Promise<SiteSettings | undefined> {
+    return this.siteSettings;
+  }
+
+  async updateSiteSettings(settings: InsertSiteSettings): Promise<SiteSettings> {
+    const id = this.siteSettings?.id || randomUUID();
+    const updatedSettings: SiteSettings = {
+      id,
+      nurseriesCount: settings.nurseriesCount || "500+",
+      parentsCount: settings.parentsCount || "10,000+",
+      appStoreRating: settings.appStoreRating || "4.9",
+      updatedAt: new Date(),
+    };
+    this.siteSettings = updatedSettings;
+    return updatedSettings;
+  }
 }
 
 export class DbStorage implements IStorage {
@@ -281,6 +302,39 @@ export class DbStorage implements IStorage {
     return result.sort((a, b) =>
       (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
     );
+  }
+
+  async getSiteSettings(): Promise<SiteSettings | undefined> {
+    const result = await this.db.select().from(siteSettings);
+    return result[0];
+  }
+
+  async updateSiteSettings(settings: InsertSiteSettings): Promise<SiteSettings> {
+    const existing = await this.getSiteSettings();
+
+    if (existing) {
+      const result = await this.db
+        .update(siteSettings)
+        .set({
+          nurseriesCount: settings.nurseriesCount,
+          parentsCount: settings.parentsCount,
+          appStoreRating: settings.appStoreRating,
+          updatedAt: new Date(),
+        })
+        .where(eq(siteSettings.id, existing.id))
+        .returning();
+      return result[0];
+    } else {
+      const result = await this.db
+        .insert(siteSettings)
+        .values({
+          nurseriesCount: settings.nurseriesCount,
+          parentsCount: settings.parentsCount,
+          appStoreRating: settings.appStoreRating,
+        })
+        .returning();
+      return result[0];
+    }
   }
 }
 

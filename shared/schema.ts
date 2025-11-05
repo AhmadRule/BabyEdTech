@@ -100,3 +100,19 @@ export const insertKindergartenOnboardingSchema = createInsertSchema(kindergarte
 
 export type InsertKindergartenOnboarding = z.infer<typeof insertKindergartenOnboardingSchema>;
 export type KindergartenOnboarding = typeof kindergartenOnboarding.$inferSelect;
+
+export const siteSettings = pgTable("site_settings", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  nurseriesCount: text("nurseries_count").notNull().default("500+"),
+  parentsCount: text("parents_count").notNull().default("10,000+"),
+  appStoreRating: text("app_store_rating").notNull().default("4.9"),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const insertSiteSettingsSchema = createInsertSchema(siteSettings).omit({
+  id: true,
+  updatedAt: true,
+});
+
+export type InsertSiteSettings = z.infer<typeof insertSiteSettingsSchema>;
+export type SiteSettings = typeof siteSettings.$inferSelect;
