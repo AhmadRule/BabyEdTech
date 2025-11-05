@@ -163,12 +163,16 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('ar');
+  const [language, setLanguage] = useState<Language>(() => {
+    const savedLanguage = localStorage.getItem('mybaby-language');
+    return (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
+  });
 
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.style.fontFamily = language === 'ar' ? 'Cairo, sans-serif' : 'Poppins, sans-serif';
+    localStorage.setItem('mybaby-language', language);
   }, [language]);
 
   const toggleLanguage = () => {

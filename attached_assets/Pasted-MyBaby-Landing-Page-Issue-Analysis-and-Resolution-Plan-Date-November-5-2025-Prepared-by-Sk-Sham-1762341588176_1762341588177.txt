@@ -1,0 +1,107 @@
+MyBaby Landing Page - Issue Analysis and Resolution Plan
+Date: November 5, 2025
+Prepared by: Sk Shamimul Islam
+1. Introduction
+This document provides a comprehensive analysis of the issues identified in the MyBaby EdTech platform’s landing page and admin panel. The purpose of this report is to categorize the existing bugs and feature requests, outline a strategic plan for resolution, and provide an estimated timeline for completion.
+2. Issue Breakdown and Analysis
+The identified issues have been categorized into three main areas: Critical Bugs, UI/UX Improvements, and New Feature Implementations. This categorization will help us prioritize our development efforts and address the most pressing issues first.
+2.1. Critical Bugs
+These are high-priority issues that significantly impact the core functionality and user experience of the application. They should be addressed immediately.
+ID
+Issue Description
+Priority
+B-01
+Language selection is not persisted across sessions.
+High
+B-02
+The company logo is not displaying correctly in the production environment.
+High
+B-03
+The client logo form in the admin panel has a typing issue.
+High
+B-04
+The admin panel has a navigation issue; there is no dashboard navigation button from the demo request page.
+High
+B-05
+The application does not automatically navigate to the dashboard after login.
+High
+B-06
+The logout process is slow.
+Medium
+
+2.2. UI/UX Improvements
+These issues affect the visual appeal and user-friendliness of the application. While not critical, they are important for providing a polished and professional user experience.
+ID
+Issue Description
+Priority
+UI-01
+The statistics on the landing page (e.g., “10k nurseries registered”) are incorrect.
+High
+UI-02
+The website favicon is not displaying.
+Low
+UI-03
+The testimonials section should have an auto-scroll feature.
+Medium
+UI-04
+There is a white bar at the bottom of the screen.
+Medium
+UI-05
+The live chat support button has a viewing issue in Arabic mode.
+Medium
+UI-06
+The Instagram link in the footer is not working.
+Low
+UI-07
+Clicking on the email address should open the default email client.
+Low
+UI-08
+The live chat icon should always be visible in the bottom corner of the screen.
+Medium
+
+2.3. New Feature Implementations
+These are requests for new functionality that will enhance the capabilities of the platform.
+ID
+Feature Description
+Priority
+F-01
+The live chat support feature is not working.
+High
+F-02
+Implement Google Pay and Apple Pay as payment options in the “Choose your solution” section.
+High
+F-03
+Create a form in the admin panel to manage real-time data for nurseries, happy parents, and app store ratings.
+Medium
+
+3. Proposed Timeline and Action Plan
+We propose a three-phased approach to address the identified issues, starting with the most critical bugs and progressively moving to UI/UX improvements and new feature implementations.
+Phase 1: Critical Bug Fixes (Estimated Time: 1-2 days)
+day 1:
+Investigate and fix the language persistence issue (B-01).
+Resolve the logo display issue in the production environment (B-02).
+Fix the typing issue in the admin panel’s client logo form (B-03).
+day 2:
+Address the navigation issue in the admin panel (B-04).
+Implement auto-navigation to the dashboard after login (B-05).
+Investigate and optimize the logout process (B-06).
+Phase 2: UI/UX Improvements (Estimated Time: 1 days)
+day 3:
+Update the statistics on the landing page with correct data (UI-01).
+Implement the auto-scrolling testimonials feature (UI-03).
+Fix the white bar issue at the bottom of the screen (UI-04).
+Resolve the live chat support button’s viewing issue in Arabic mode (UI-05).
+Ensure the live chat icon is always visible (UI-08).
+Add the website favicon (UI-02).
+Fix the Instagram link in the footer (UI-06).
+Implement the “mailto” functionality for the email address (UI-07).
+Phase 3: New Feature Implementations (Estimated Time: 3 days)
+day 4-5:
+Integrate a functional live chat support system (F-01).
+Begin the implementation of Google Pay and Apple Pay (F-02).
+day 6:
+Complete the payment gateway integration and testing (F-02).
+Develop the admin panel form for managing real-time data (F-03).
+4. Conclusion
+This report provides a clear roadmap for addressing the current issues and implementing new features for the MyBaby EdTech platform. By following this structured plan, we can efficiently improve the platform’s stability, user experience, and functionality. We recommend proceeding with Phase 1 as soon as possible.
+
