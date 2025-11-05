@@ -30,13 +30,12 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
+      // Fast logout - await to prevent race condition with /api/admin/me
       await apiRequest('POST', '/api/admin/logout', {});
-      toast({
-        title: 'Success',
-        description: 'Logged out successfully',
-      });
+      // Redirect immediately after successful logout (no toast for speed)
       setLocation('/admin/login');
     } catch (error: any) {
+      // Only show error if logout actually fails
       toast({
         title: 'Error',
         description: error.message || 'Logout failed',

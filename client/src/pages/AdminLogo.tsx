@@ -81,14 +81,21 @@ export default function AdminLogo() {
     },
   });
 
-  const logoutMutation = useMutation({
-    mutationFn: async () => {
-      return await apiRequest('POST', '/api/admin/logout');
-    },
-    onSuccess: () => {
+  const handleLogout = async () => {
+    try {
+      // Fast logout - await to prevent race condition with /api/admin/me
+      await apiRequest('POST', '/api/admin/logout');
+      // Redirect immediately after successful logout (no toast for speed)
       setLocation('/admin/login');
-    },
-  });
+    } catch (error: any) {
+      // Only show error if logout actually fails
+      toast({
+        title: 'Error',
+        description: error.message || 'Logout failed',
+        variant: 'destructive',
+      });
+    }
+  };
 
   const uploadClientLogoMutation = useMutation({
     mutationFn: async ({ file, name }: { file: File; name: string }) => {
@@ -206,7 +213,7 @@ export default function AdminLogo() {
             </Button>
             <Button
               variant="outline"
-              onClick={() => logoutMutation.mutate()}
+              onClick={handleLogout}
               data-testid="button-logout"
             >
               <LogOut className="h-4 w-4 mr-2" />
