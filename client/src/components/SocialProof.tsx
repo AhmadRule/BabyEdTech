@@ -1,27 +1,33 @@
 import { Star, Users, Building2, Clock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useQuery } from '@tanstack/react-query';
+import type { SiteSettings } from '@shared/schema';
 
 export default function SocialProof() {
   const { language, formatNumber } = useLanguage();
 
+  const { data: siteSettings } = useQuery<SiteSettings>({
+    queryKey: ['/api/site-settings'],
+  });
+
   const stats = [
     {
       icon: Star,
-      value: '4.9/5',
+      value: `${siteSettings?.appStoreRating || '4.9'}/5`,
       labelEn: 'Average Rating',
       labelAr: 'متوسط التقييم',
       gradient: 'from-chart-1/20 to-chart-1/5'
     },
     {
       icon: Users,
-      value: '500+',
+      value: siteSettings?.nurseriesCount || '500+',
       labelEn: 'Happy Nurseries',
       labelAr: 'حضانة سعيدة',
       gradient: 'from-chart-2/20 to-chart-2/5'
     },
     {
       icon: Building2,
-      value: '10,000+',
+      value: siteSettings?.parentsCount || '10,000+',
       labelEn: 'Active Families',
       labelAr: 'عائلة نشطة',
       gradient: 'from-chart-4/20 to-chart-4/5'
