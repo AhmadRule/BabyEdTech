@@ -14,7 +14,7 @@ MyBaby is an EdTech SaaS platform, and this project delivers its fully responsiv
 **UI/UX Decisions:**
 - **Bilingual Support:** Arabic (default) and English with RTL layout switching. Language preference persists via localStorage.
 - **Responsive Design:** Optimized for all devices.
-- **Branding:** MyBaby brand color palette is used (Primary: #0682F0). Typography includes Cairo/Noto Kufi Arabic for Arabic and Poppins/Nunito for English.
+- **Branding:** MyBaby brand color palette is used (Primary: #0682F0). Typography includes Cairo/Noto Kufi Arabic for Arabic and Poppins/Nunito for English. Custom favicon featuring MyBaby branding in primary brand color.
 - **Modern Components:** Hero, Features, Testimonials, Social Proof, CTA, StakeholderValue, Footer.
 - **Animations:** Subtle motion graphics like floating circles, gradient blobs, and pulsing elements are used for a professional aesthetic.
 - **Kindergarten Onboarding:** Bilingual form with logo upload, live preview, and validation.
