@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
 import Logo from '@/components/Logo';
-import { Upload, LogOut, Trash2, Building2, MessageSquare, LayoutDashboard } from 'lucide-react';
+import { Upload, LogOut, Trash2, Building2, MessageSquare, LayoutDashboard, Users } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import type { ClientLogo, ContactSubmission, SiteSettings } from '@shared/schema';
 
