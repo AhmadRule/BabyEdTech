@@ -182,6 +182,11 @@ Free onboarding form allowing kindergartens to register for the MyBaby platform.
 - All sensitive routes require authentication
 
 ## Recent Changes
+- 2025-11-05: **Admin panel navigation improvements:**
+  - ✅ Added Dashboard navigation button to Admin Logo page header
+  - ✅ Improved navigation flow between admin panel pages
+  - ✅ Optimized client name input handler with useCallback for better performance
+  - ✅ Fixed navigation at `/admin/logo` and `/admin/dashboard`
 - 2025-11-05: **Language persistence, mobile responsiveness, and logo fix:**
   - ✅ Implemented language persistence using localStorage
   - ✅ User language preference (Arabic/English) now saves automatically
