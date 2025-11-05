@@ -12,7 +12,7 @@ export default function Logo({ className = "" }: LogoProps) {
     <div className={`flex flex-col ${className}`}>
       <div className="flex items-center gap-2">
         <img 
-          src="/attached_assets/Mybaby-instagram_1762342161241.png" 
+          src="/attached_assets/IMG_9791_1762342317626.jpeg" 
           alt="MyBaby Logo" 
           className="h-12 md:h-16 w-auto object-contain"
         />
