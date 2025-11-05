@@ -13,6 +13,11 @@ interface LogoData {
 export default function Logo({ className = "" }: LogoProps) {
   const { data: logoData } = useQuery<LogoData>({
     queryKey: ['/api/logo'],
+    staleTime: Infinity,
+    gcTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
   const { t } = useLanguage();
 
