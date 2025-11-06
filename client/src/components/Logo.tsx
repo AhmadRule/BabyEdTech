@@ -25,7 +25,7 @@ export default function Logo({ className = "" }: LogoProps) {
   return (
     <div className={`flex flex-col items-center ${className}`}>
       <img
-        src="./public/mybaby-logo.png"
+        src="/mybaby-logo.png"
         alt="MyBaby Logo"
         className="h-12 md:h-16 w-auto object-contain"
       />
